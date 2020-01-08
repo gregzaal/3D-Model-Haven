@@ -35,9 +35,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             </div>
 
             <div class="col-2">
-                <h1>8k, PBR</h1>
-                <p>Free stuff and quality stuff are not always mutually exclusive.</p>
-                <p>Models here are some of the best you'll find, they're not just photos, but scanned map sets for the full PBR experience.</p>
+                <h1>Multi-format PBR</h1>
+                <p>High or low poly, specular or metalness, normal or displacement...</p>
+                <p>All the background assets you'll need to build the next AAA game, or the delicate interior of a modern apartment.</p>
                 <a href="/models">
                     <div class='button'>Browse Models</div>
                 </a>
@@ -71,9 +71,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             </div>
 
             <div class="text-block">
-                <p>With Patreon, you can contribute to help us pay the server cost and develop new model scans. When a goal is achieved, something new will come. Think unlocking 8k models, PNG files, increasing uploads and more.</p>
-                <p>Not only can you contribute financially, but you can get directly involved in the process, helping decide what models we shoot, and ultimately the direction this site is going.</p>
-                <p>Spendings of donation each month is verified by <a href="/p/finance-reports.php" target="_blank">public finance reports</a>.</p>
+                <p>As a 3D artist you know how much work it takes to build high quality 3D models - especially ones that thousands of people might use for a variety of purposes.</p>
+                <p>Rather than sell our 3D assets, we provide them for free to everyone without restriction. The goal of 3D Model Haven, along with the other Havens, is to both <b>raise the bar</b> for the quality of work that artists like you produce, as well as <b>lower the barrier to entry</b> for newer artists.</p>
+                <p>If you'd like to help us work towards this goal, we would very much appreciate your support. The allocation and spendings of your donations can be verified by monthly <a href="/p/finance-reports.php" target="_blank">public finance reports</a>.</p>
             </div>
 
             <a href="https://www.patreon.com/3dmodelhaven/overview" target="_blank">

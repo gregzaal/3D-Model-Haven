@@ -47,14 +47,7 @@ var now_playing = null;
 var on_load = function(){
     images = [
     ["1.jpg", "Rob Tuytel"],
-    ["2.jpg", "Rob Tuytel"],
-    ["3.jpg", "Rob Tuytel"],
-    ["4.jpg", "Rob Tuytel"],
-    ["5.jpg", "Rob Tuytel"],
-    ["6.jpg", "Rob Tuytel"],
-    ["7.jpg", "Rob Tuytel"],
-    ["8.jpg", "Rob Tuytel"],
-    ["9.jpg", "Rob Tuytel"],
+    ["placeholder.png", "Rob Tuytel"],
     ];
 
     setTimeout(function(){

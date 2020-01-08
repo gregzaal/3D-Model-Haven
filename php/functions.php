@@ -1,8 +1,8 @@
 <?php
 
 // Site Variables
-$SITE_NAME = "Texture Haven";
-$SITE_DESCRIPTION = "100% Free High Quality Textures for Everyone";
+$SITE_NAME = "3D Model Haven";
+$SITE_DESCRIPTION = "100% Free High Quality 3D Models for Everyone";
 $SITE_TAGS = "Texture,PBR,free,cc0,creative commons";
 $SITE_DOMAIN = "texturehaven.com";
 $SITE_URL = "https://".$SITE_DOMAIN;

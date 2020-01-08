@@ -17,13 +17,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
     <h1>About</h1>
     <p>
-        The purpose of 3D Model Haven is to provide a platform of high quality PBR models for free to everyone, with no catch.
+        The goal of 3D Model Haven is to provide high quality 3D models for free to everyone, with no catch.
     </p>
     <p>
         All models here are <a href="/p/license.php">CC0</a> (public domain). No paywalls, accounts or email spam. Just download what you want, and use it however.
     </p>
     <p>
-        3D Model Haven is officially linked with <a href="https://hdrihaven.com">HDRI Haven</a>. Greg Zaal (who runs HDRI haven) is involved in building and maintaining this website as well providing guidance and technical support.
+        3D Model Haven is officially linked with <a href="https://hdrihaven.com">HDRI Haven</a> and <a href="https://texturehaven.com">Texture Haven</a>.
     </p>
 
     <h1>Get Involved</h1>
