@@ -16,7 +16,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 
     <div id='banner-title-wrapper'>
-        <img src="/files/site_images/logo_main.png" id="banner-logo" />  <!-- TODO SVG -->
+        <img src="/core/img/Model Haven Logo.svg" id="banner-logo" />
         <p>100% Free 3D Models, for Everyone.</p>
     </div>
 </div>
@@ -83,6 +83,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </div>
 
     <div class="segment-montage">
+        <div class="segment-montage-hover"></div>
         <a href="/models">
             <div class='button'>Browse Models</div>
         </a>
