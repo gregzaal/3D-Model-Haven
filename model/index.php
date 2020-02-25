@@ -64,7 +64,7 @@ $is_published = is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOC
 if ($is_published){
     echo "<div id='preview-download'>";
     echo "<div id='item-preview'>";
-    echo "<img src=\"/files/tex_images/spheres/".$slug.".jpg\" />";
+    echo "<img src=\"/files/model_images/renders/".$slug.".jpg\" />";
     echo "<div id='map-preview-img' class='hide'/>";
     echo "<div id='map-preview-zoom-btns' class='hide-mobile'>";
     echo "<div id='map-preview-resolution'>";

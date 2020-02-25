@@ -3,21 +3,21 @@
 // Site Variables
 $SITE_NAME = "3D Model Haven";
 $SITE_DESCRIPTION = "100% Free High Quality 3D Models for Everyone";
-$SITE_TAGS = "Texture,PBR,free,cc0,creative commons";
-$SITE_DOMAIN = "texturehaven.com";
+$SITE_TAGS = "3D,Model,Arch-viz,Game,Unreal,Unity,Blender,Maya,Max,FBX,Textured,PBR,free,cc0,creative commons";
+$SITE_DOMAIN = "3dmodelhaven.com";
 $SITE_URL = "https://".$SITE_DOMAIN;
-$SITE_LOGO = "/core/img/Texture Haven Logo.svg";
+$SITE_LOGO = "/core/img/Model Haven Logo.svg";
 $SITE_LOGO_URL = $SITE_URL.$SITE_LOGO;
-$META_URL_BASE = $SITE_URL."/files/tex_images/spheres/";
+$META_URL_BASE = $SITE_URL."/files/mod_images/meta/";
 $DEFAULT_AUTHOR = "Rob Tuytel, Greg Zaal";
-$CONTENT_TYPE = "textures";  // For DB table name & library url
-$CONTENT_TYPE_SHORT = "tex";  // For CSS classes
-$CONTENT_TYPE_NAME = "textures";  // For display
-$TEX1_CONTENT_TYPE = "tex-pbr";
-$TEX1_CONTENT_METHOD = "scanned";
-$HANDLE_PATREON = "TextureHaven";
-$HANDLE_TWITTER = "texturehaven";
-$HANDLE_FB = "texturehaven";
+$CONTENT_TYPE = "models";  // For DB table name & library url
+$CONTENT_TYPE_SHORT = "mod";  // For CSS classes
+$CONTENT_TYPE_NAME = "3D models";  // For display
+$TEX1_CONTENT_TYPE = "model";
+$TEX1_CONTENT_METHOD = "various";
+$HANDLE_PATREON = "3dmodelhaven";
+$HANDLE_TWITTER = "3DModelHaven";
+$HANDLE_FB = "3dmodelhaven";
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/core/core.php');
 
@@ -83,18 +83,18 @@ function make_search_SQL($search, $category="all", $author="all") {
 
 
 // ============================================================================
-// Texture Grid
+// Model Grid
 // ============================================================================
 
 function make_grid_item($i, $category="all"){
     $html = "";
 
     $slug = $i['slug'];
-    $html .= "<a href=\"/tex/?";
+    $html .= "<a href=\"/model/?";
     if ($category != "all"){
         $html .= "c=".$category."&amp;";
     }
-    $html .= "t=".$slug;
+    $html .= "m=".$slug;
     $html .= "\">";
     $html .= "<div class='grid-item'>";
 
@@ -103,7 +103,7 @@ function make_grid_item($i, $category="all"){
     // Encoded tiny proxy images so that there is *something* to look at while the images load
     $html .= "<img ";
     $html .= "class='thumbnail-proxy' ";
-    $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "tex_images", "thumbnails", "s", $slug.'.jpg');
+    $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "model_images", "thumbnails", "s", $slug.'.jpg');
     $imageData = base64_encode(file_get_contents($local_file));
     $html .= "src=\"data:image/jpeg;base64,".$imageData."\" ";
     $html .= "/>";
@@ -111,11 +111,11 @@ function make_grid_item($i, $category="all"){
     // Main thumbnail images that are only loaded when they come into view
     $html .= "<img ";
     $html .= "class='thumbnail' ";
-    $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "tex_images", "thumbnails", "s", '_dummy.png');
+    $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "model_images", "thumbnails", "s", '_dummy.png');
     $imageData = base64_encode(file_get_contents($local_file));
     $html .= "src=\"data:image/png;base64,".$imageData."\" ";
-    $html .= "data-src=\"/files/tex_images/thumbnails/{$slug}.jpg\" ";
-    $html .= "alt=\"Texture: {$i['name']}\" ";
+    $html .= "data-src=\"/files/model_images/thumbnails/{$slug}.jpg\" ";
+    $html .= "alt=\"Model: {$i['name']}\" ";
     $html .= "/>";
 
     $age = time() - strtotime($i['date_published']);
