@@ -65,7 +65,8 @@ if ($is_published){
     echo "<div id='preview-info'>";
 
     echo "<div id='item-preview'>";
-    echo "<img src=\"/files/mod_images/renders/{$slug}.png\" />";
+    $img = filepath_to_url(get_slug_thumbnail($slug, 640, 90));
+    echo "<img src=\"{$img}\" />";
     echo "<div id='map-preview-img' class='hide'/>";
     echo "<div id='map-preview-zoom-btns' class='hide-mobile'>";
     echo "<div id='map-preview-resolution'>";
@@ -80,10 +81,6 @@ if ($is_published){
     echo "</div>";  // #zoom-btns
     echo "</div>";  // #map-preview-img
     echo "</div>";  // #item-preview
-
-    if ($GLOBALS['WORKING_LOCALLY'] && is_in_the_past($info['date_published']) == False){
-        echo "<p style='text-align:center;opacity:0.5;'>(working locally on a yet-to-be-published model)</p>";
-    }
     echo "<div id='item-info'>";
 
     echo "<ul class='item-info-list'>";
@@ -133,13 +130,26 @@ if ($is_published){
     echo "</div>";  // #preview-info
 
 
+    if ($GLOBALS['WORKING_LOCALLY'] && is_in_the_past($info['date_published']) == False){
+        echo "<p style='text-align:center;opacity:0.5;'>(working locally on a yet-to-be-published model)</p>";
+    }
+
+
     echo "<div class='download-buttons'>";
     echo "<h2>Downloads:</h2>";
+    echo "<p class='center small'><span class='red-text'>BETA</span><br>We know this download section is ugly and we'd like to improve it.<br>Please let us know <a href='https://discord.gg/Dms7Mrs'>on discord</a> if you have any ideas for how to make it easier to select the files you want.</p>";
     $downloads = [];
     $base_dir = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "models", $slug);
-    echo "<div class='fake-table'>";
-    fill_file_table($info, $base_dir);
-    echo "</div>";  // .fake-table
+    if (file_exists($base_dir)){
+        echo "<div class='fake-table'>";
+        fill_file_table($info, $base_dir);
+        echo "</div>";  // .fake-table
+    }else{
+        echo "<p class='red-text center'><b>";
+        echo "Can't find any files! Please ";
+        insert_email("let us know");
+        echo " that you're seeing this error.</b></p>";
+    }
     echo "</div>";  // .download-buttons
 
 

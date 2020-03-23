@@ -284,10 +284,10 @@ $display_banner_credit: none;  // Hide if it's only our own work
     .fake-table{
         margin: 0.5em;
         font-size: 0.9em;
-    }
 
-    a {
-        color: $c-text-light;
+        a {
+            color: $c-text-light;
+        }
     }
 
     .folder, .dl-btn {
