@@ -7,7 +7,7 @@
     </div>
     </a>
 
-    <a href="/admin/new_tex.php">
+    <a href="/admin/new_mod.php">
     <div class='header-item'>
         <i class="fa fa-plus" aria-hidden="true"></i>
         <p>Add Model</p>
@@ -18,20 +18,6 @@
     <div class='header-item'>
         <i class="fa fa-list-ul" aria-hidden="true"></i>
         <p>Edit/Remove Models</p>
-    </div>
-    </a>
-
-    <a href="/admin/validate.php">
-    <div class='header-item'>
-        <i class="fa fa-check-square" aria-hidden="true"></i>
-        <p>Validate Models</p>
-    </div>
-    </a>
-
-    <a href="/admin/git_pull.php">
-    <div class='header-item'>
-        <i class="fab fa-github" aria-hidden="true"></i>
-        <p>Git Pull</p>
     </div>
     </a>
 
