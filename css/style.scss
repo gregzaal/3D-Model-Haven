@@ -164,7 +164,7 @@ $display_banner_credit: none;  // Hide if it's only our own work
     display: none;
 }
 
-#preview-download {
+#preview-info {
     position: relative;
 }
 #item-preview {
@@ -279,139 +279,84 @@ $display_banner_credit: none;  // Hide if it's only our own work
 }
 
 .download-buttons {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    width: calc(100% - 700px - 2em);
-    padding: 1em;
-    margin-top: -0.85em;
+    margin: 1em 0;
 
-    $c-border: $c-background-light;
-
-    h2 {
-        padding: 0.75em !important;
-    }
-
-    .map-type {
-        display: block;
-        width: 100%;
-        height: 48px;
-        border: 1px solid $c-border;
-        border-bottom: none;
-
-        &:last-of-type {
-            border-bottom: 1px solid $c-border;
-        }
-    }
-    .map-download, .map-preview {
-        @extend .button-dark;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        height: 48px;
-        padding: 0;
-        vertical-align: top;
-        border: none;
-
-        p {
-            font-size: 1em;
-            margin: 0.75em;
-        }
-
-        sup {
-            display: block;
-            margin-top: 0.2em;
-            font-size: 0.75em;
-            font-weight: $fw-normal;
-        }
-    }
-    .map-preview {
-        width: 48px;
-        cursor: pointer;
-
-        img {
-            width: 28px;
-        }
-    }
-    .map-preview-active {
-        background-color: $c-accent;
-
-        &:hover {
-            background-color: $c-accent;
-        }
-    }
-    .map-download {
-        width: calc(100% - 48px - 1px);
-        border-left: 1px solid $c-border;
-        cursor: pointer;
-
-        &:hover {
-            border-left: 1px solid $c-border;
-        }
-
-        img {
-            width: 28px;
-            margin: -8px 4px -8px -8px;
-        }
-    }
-    .map-download-active {
-        background-color: $c-accent;
-
-        &:hover {
-            background-color: $c-accent;
-        }
-    }
-    .res-menu {
-        position: absolute;
-        z-index: 10;
-        width: calc(100% - 2em - 2px);
-        border: 1px solid $c-accent;
-
-        .res-item {
-            width: 100%;
-            border-bottom: 1px solid $c-border;
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-    }
-
-    .dl-btn {
-        @extend .button-inverse;
-        border: none;
-        border-right: 1px solid $c-accent;
+    .fake-table{
+        margin: 0.5em;
         font-size: 0.9em;
-        text-align: center;
-        white-space: nowrap;
+    }
+
+    a {
         color: $c-text-light;
-        cursor: pointer;
+    }
 
-        &:last-child {
-            border-right: none;
+    .folder, .dl-btn {
+        background-color: $c-background-lightish;
+        border-bottom: 1px solid rgba($c-background-light, 0.5);
 
-            &:hover {
-                box-shadow: 1px 0 0 0 $c-accent;  // hack to get rid of 1px space
-            }
+        a {
+            color: $c-text-light;
         }
 
-        &:hover{
-            background-color: $c-accent;
+        &:hover {
+            background-color: $c-background-light;
+            cursor: pointer;
         }
     }
-}
-@media all and (max-width: 1024px){
-    .download-buttons {
-        display: block;
-        width: auto;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+
+    .folder {
+        opacity: 0.75;
+
+        &:hover {
+            background-color: $c-background-lightish;
+            cursor: default;
+        }
+    }
+
+    .td {
+        padding: 0.3em;
+        vertical-align: middle;
+        display: inline-block;
+        width: calc(100% - 100px - 1.2em);
+
+        em {
+            font-style: normal;
+            opacity: 0.3;
+        }
+
+        sub {
+            font-style: normal;
+            opacity: 0.6;
+        }
+    }
+
+    .fs {
+        width: 100px;
+        text-align: center;
+    }
+
+    .br {
+        border-right: 1px solid rgba(black, 0.1);
+    }
+
+    .sel {
+        width: 0;
+    }
+    // }
+
+    .icon {
+        width: 24px;
+        vertical-align: middle;
+        padding-right: 4px;
     }
 }
 
 #item-info {
-    padding-top: 0.75em;
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 700px - 2em);
+    padding: 1em;
+    vertical-align: middle;
 
     #sponsor-list {
         list-style: none;
@@ -429,18 +374,16 @@ $display_banner_credit: none;  // Hide if it's only our own work
 
 .item-info-list {
     list-style: none;
-    text-align: center;
 
     li {
-        display: inline;
-        padding: 0.5em;
+        padding: 0.5em 0;
         margin: 0;
-        font-size: 0.9em;
+        font-size: 0.8em;
+        line-height: 1.2em;
         color: rgba($c-text-light, 0.8);
 
         b {
-            font-weight: $fw-normal;
-            color: $c-text-light;
+            font-size: 1.2em;
         }
 
         i {

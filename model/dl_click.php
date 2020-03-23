@@ -18,7 +18,7 @@ if(isset($_POST['id']) and isset($_POST['fhash'])){
         $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
     }
     $ip_hash = simple_hash($_SERVER['REMOTE_ADDR']);
-    $sql = "INSERT INTO download_counting (`ip`, `tex_id`, `file_hash`) ";
+    $sql = "INSERT INTO download_counting (`ip`, `mod_id`, `file_hash`) ";
     $sql .= "VALUES (\"".$ip_hash."\", \"".$id."\", \"".$file_hash."\")";
     $result = mysqli_query($conn, $sql);
 

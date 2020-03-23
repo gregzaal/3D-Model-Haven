@@ -36,8 +36,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
             <div class="col-2">
                 <h1>Multi-format PBR</h1>
-                <p>High or low poly, specular or metalness, normal or displacement...</p>
-                <p>All the background assets you'll need to build the next AAA game, or the delicate interior of a modern apartment.</p>
+                <p>High & low poly, 4k PBR textures, multiple software formats...</p>
+                <p>All the background assets you'll need to build the next AAA game, film, or visualization - no matter your tool of choice.</p>
                 <a href="/models">
                     <div class='button'>Browse Models</div>
                 </a>
@@ -81,6 +81,31 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             </a>
         </div>
     </div>
+
+    <?php
+    $conn = db_conn_read_only();
+    $comm_sponsors = get_commercial_sponsors($conn);
+    if (!empty($comm_sponsors)){
+        echo "<div class='segment-a'>";
+        echo "<div class='segment-inner'>";
+        echo "<h2>Also supported by:</h2>";
+        echo "<div class='commercial_sponsors'>";
+        foreach ($comm_sponsors as $s){
+            echo "<a href= \"".$s['link']."\" target='_blank'>";
+            echo "<img src=\"/files/site_images/commercial_sponsors/";
+            echo $s['logo'];
+            echo "\" alt=\"";
+            echo $s['name'];
+            echo "\" title=\"";
+            echo $s['name'];
+            echo "\"/>";
+            echo "</a>";
+        }
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
 
     <div class="segment-montage">
         <div class="segment-montage-hover"></div>
