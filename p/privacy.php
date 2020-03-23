@@ -20,7 +20,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         This server logs your IP address when you download a model (after some minor obfuscation).
     </p>
     <p>
-        This helps us to see which models are downloaded the most by letting us track unique downloads (ignoring multiple downloads of the same model) instead of only total downloads, thus helping us see more accurately what is popular and making decisions about what to shoot next.
+        This helps us to see which models are downloaded the most by letting us track unique downloads (ignoring multiple downloads of the same model) instead of only total downloads, thus helping us see more accurately what is popular and making decisions about what to make next.
     </p>
     <p>
         If you're not comfortable with this, you can use a VPN to obscure your public IP address.

@@ -13,7 +13,7 @@ $display_banner_credit: none;  // Hide if it's only our own work
 // ============================================================================
 
 .grid-item {
-    $grid-item-padding: 1.287em;  // This exact padding means the 350px image isn't resized when viewed on a 1080p screen. #whoneedsfutureproofing
+    $grid-item-padding: 0.664em;  // This exact padding means the 370px image isn't resized when viewed on a 1080p screen. #whoneedsfutureproofing
 
     position: relative;
     display: inline-block;
@@ -123,6 +123,33 @@ $display_banner_credit: none;  // Hide if it's only our own work
             filter: none;
             transform: none;
             @include transition(0.15s);
+        }
+    }
+}
+
+.category-list-images {
+
+    li {
+        border-radius: 0;
+
+        &:hover {
+            box-shadow: none;
+            transform: none;
+
+            .background-image {
+                transform: scale(0.9);
+                filter: brightness(0.8);
+            }
+
+            p {
+                text-shadow: 7px 7px 10px rgba(0,0,0, 0.5);
+                transform: translate(-2px, -2px);
+                @include transition(0.2s);
+            }
+        }
+
+        .background-image {
+            transform: none;
         }
     }
 }

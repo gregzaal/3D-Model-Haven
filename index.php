@@ -94,16 +94,16 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             <h1>About</h1>
             <img class='me' src="/files/site_images/me.jpg">
             <p>
-                My name is Rob Tuytel, I'm from the Netherlands and I mainly work as an environment designer. I produce VR projects with historical backgrounds and I also teach a course on the Udemy platform for the last few years.
+                My name is Cameron Casey, I'm an environment artist from all around the United States.
             </p>
             <p>
-                I spend a lot of time on making models, which I use for my 3D environment scenes.
+                Our goal for 3D Model Haven is to create a constantly growing community-funded resource of <b>open content</b>, for complete freedom and usability by professionals and hobbyists alike.
             </p>
             <p>
-                3D Model Haven is a website where you can find high quality scanned models for free, no catch. All models here are <a href="/p/license.php">CC0</a> (public domain). No paywalls, accounts or email spam. Just download what you want, and use it for every purpose.
+                The models on this site are free, no catch, released as <a href="/p/license.php">CC0</a> (public domain and copyright-free). No paywalls, accounts or email spam. Just download what you want, and use it for any purpose.
             </p>
             <p>
-                If you like what I do and want to keep this site alive, consider <a href="https://www.patreon.com/3dmodelhaven/overview">supporting me on Patreon</a>.
+                If you like what we do and want to keep this site alive, consider <a href="https://www.patreon.com/3dmodelhaven/overview">supporting us on Patreon</a>.
             </p>
         </div>
         <div style="clear: both"></div>

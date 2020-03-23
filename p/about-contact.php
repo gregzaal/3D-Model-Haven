@@ -10,17 +10,20 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </div>
     <h1>Hi there!</h1>
     <p>
-        My name is Rob Tuytel, I'm from the Netherlands and I mainly work as an environment designer. I produce VR projects with historical backgrounds and I also teach a course on the Udemy platform for the last few years.
+        My name is Cameron Casey, I'm an environment artist from all around the United States, currently working in the video game industry.
+    </p>
+    <p>
+        Together with <a href="https://hdrihaven.com/" target="_blank">Greg Zaal</a>, I run the show here for 3D Model Haven.
     </p>
 
     <div style="clear: both"></div>
 
     <h1>About</h1>
     <p>
-        The goal of 3D Model Haven is to provide high quality 3D models for free to everyone, with no catch.
+        3D Model Haven is a resource of free high quality 3D assets for everyone, following in the footsteps of <a href="https://hdrihaven.com/" target="_blank">HDRI Haven</a> and <a href="https://texturehaven.com/" target="_blank">Texture Haven</a>. Our goal is to create a constantly growing community-funded resource of open content, licensed as <a href="/p/license.php" target="_blank">CC0</a> for complete freedom and usability by professionals and hobbyists alike.
     </p>
     <p>
-        All models here are <a href="/p/license.php">CC0</a> (public domain). No paywalls, accounts or email spam. Just download what you want, and use it however.
+        All models here are <a href="/p/license.php">CC0</a> (public domain and copyright-free). No paywalls, accounts or email spam. Just download what you want, and use it however you like.
     </p>
     <p>
         3D Model Haven is officially linked with <a href="https://hdrihaven.com">HDRI Haven</a> and <a href="https://texturehaven.com">Texture Haven</a>.

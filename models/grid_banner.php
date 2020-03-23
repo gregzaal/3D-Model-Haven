@@ -2,14 +2,14 @@
     <div class='segment-a'>
         <div class='segment-inner'>
             <div class='col-4'>
-                <img class="grid-banner-icon" src="/core/img/icons/res.svg">
-                <h2>8k, 16-bit PNG</h2>
-                <p>More resolution than you'll ever need, with high bit-depth files available.</p>
+                <img class="grid-banner-icon" src="/files/site_images/icons/formats.svg">
+                <h2>Multiple Formats</h2>
+                <p>Whatever your choice of software or intended use, you'll find what you need.</p>
             </div>
             <div class='col-4'>
                 <img class="grid-banner-icon" src="/files/site_images/icons/texture.svg">
                 <h2>PBR Maps</h2>
-                <p>Not just some random image textures, but photoscanned PBR map sets.</p>
+                <p>Standard high resolution texture maps included by default for all assets.</p>
             </div>
             <div class='col-4'>
                 <img class="grid-banner-icon" src="/core/img/icons/download.svg">
@@ -47,7 +47,8 @@
                     if ($i == 1){
                         echo " id='list-start-pos'";
                     }
-                    echo " style=\"background: url(/files/model_images/thumbnails/".$pop[$c].".jpg) no-repeat center center\"";
+                    $img = filepath_to_url(get_slug_thumbnail($pop[$c], 150, 85));
+                    echo " style=\"background: url({$img}) no-repeat center center\"";
                     echo "></div>";
                     echo "<p>".nice_name($c, "category")."</p>";
                     echo "</li>";
