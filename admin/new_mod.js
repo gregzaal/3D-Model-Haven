@@ -89,28 +89,28 @@ var go = function(){
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
-                $('#sphere-render-preview').attr('src', e.target.result);
+                $('#main-render-preview').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#sphere-render").change(function() {
+    $("#main-render").change(function() {
         previewUploaded(this);
-        $("#sphere-render-preview-wrapper").removeClass("hidden");
+        $("#main-render-preview-wrapper").removeClass("hidden");
     });
 
     function previewUploadedImg(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
-                $('#sphere-render-preview').attr('src', e.target.result);
+                $('#main-render-preview').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
-    $("#sphere-render").change(function() {
+    $("#main-render").change(function() {
         previewUploadedImg(this);
-        $("#sphere-render-preview-wrapper").removeClass("hidden");
+        $("#main-render-preview-wrapper").removeClass("hidden");
     });
 
     // Click functions
@@ -125,12 +125,12 @@ var go = function(){
         }
     });
 
-    $('#auto-slug').click(function() {
-        if($("#form-slug").is(":disabled")){
-            $("#form-slug").prop("disabled", false);
+    $('#auto-name').click(function() {
+        if($("#form-name").is(":disabled")){
+            $("#form-name").prop("disabled", false);
         }else{
-            $("#form-slug").prop("disabled", true);
-            autoSlug();
+            $("#form-name").prop("disabled", true);
+            autoName();
         }
     });
 
@@ -175,37 +175,28 @@ var go = function(){
 
     // Form changes
     var validateSlug = function(str){
-            str = str.toLowerCase().replace(/ /g, "_");
-            return allowedCharsOnly(str, "qwertyuiopasdfghjklzxcvbnm_-0123456789");
+            str = str.replace(/ /g, "_");
+            return allowedCharsOnly(str, "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM_-0123456789");
     }
-    var autoSlug = function(){
-        if ($("#auto-slug").is(":checked")){
-            var name = $('#form-name').val();
-            $("#form-slug").val(validateSlug(name));
-            $('#form-slug-actual').val($('#form-slug').val());
+    var slugToName = function(str){
+        str = str.replace(/_/g, " ");
+        str = str.replace(/([A-Z])/g, ' $1');  // Space before caps
+        str = str.replace(/^./, function(str){ return str.toUpperCase(); });  // First letter caps
+        str = str.replace(/ +(?= )/g,'');  // Double spaces
+        str = str.trim();
+        return str;
+    }
+    var autoName = function(){
+        if ($("#auto-name").is(":checked")){
+            var slug = $('#form-slug').val();
+            $("#form-name").val(slugToName(slug));
+            $('#form-name-actual').val($('#form-name').val());
         }
     }
-    $('#form-name').keyup(autoSlug);
+    $('#form-slug').keyup(autoName);
     $('#form-slug').change(function(){
         $('#form-slug').val(validateSlug($('#form-slug').val()));
-        $('#form-slug-actual').val($('#form-slug').val());
-    });
-
-    var validateDateTime = function(str){
-        str = str.replace(/\\/g, "\/");
-        str = str.replace(/-/g, "\/");
-        str = allowedCharsOnly(str, "0123456789:/ ");
-        return str;
-    }
-    var validateDatePublished = function(str){
-        str = validateDateTime(str);
-        if (str == ""){
-            return "Immediately";
-        }
-        return str;
-    }
-    $('#form-date-published').change(function(){
-        $('#form-date-published').val(validateDatePublished($('#form-date-published').val()));
+        $('#form-name-actual').val($('#form-slug').val());
     });
 
     var validateTagsCats = function(str){

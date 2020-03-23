@@ -11,7 +11,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="new_tex.js"></script>
+    <script src="new_mod.js"></script>
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
 </head>
 <body>
 
@@ -19,7 +22,21 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 <div id="page-wrapper">
 <div id="page">
 
-<form action="/admin/new_tex_submit.php" method="POST" enctype="multipart/form-data" id="new-tex-form">
+
+<!--
+    [F] Main Render
+    [F] Additional Renders
+    Name
+    Slug
+    [L] File tree
+    Categories
+    Tags
+    When to Publish
+    Author
+    Facebook/Twitter
+ -->
+
+<form action="/admin/new_mod_submit.php" method="POST" enctype="multipart/form-data" id="new-mod-form">
 
     <?php
     if(isset($_GET["error"])) {
@@ -30,55 +47,38 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     }
     ?>
 
-    <!-- <div class="form-item">
-    <h2>Upload model maps:</h2>
-    <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
-    <input type="file" name="model_maps[]" multiple="multiple" id="model-maps" required>
-    <div class="tooltip hidden"
-        >Select all files for this model.<br>
-        Choose only the highest resolution of each map. Lower resolution versions will be generated.<br>
-        <br>
-        The names of these files must match this pattern: <q>slug_maptype.png</q><br>
-        They must <b>not</b> include the resolution (e.g. not slug_maptype_<b>8k</b>.png).
-    </div>
-    <ul id="map-list" class="hidden"></ul>
-    </div> -->
-
     <div class="form-item">
-    <h2>Upload sphere render:</h2>
+    <h2>Upload main render:</h2>
     <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
-    <input type="file" name="sphere_render" id="sphere-render" required>
-    <div class="tooltip hidden">Must be a 640x640 PNG with transparent background.</div>
-    <div id="sphere-render-preview-wrapper" class="hidden">
-        <img src="#" id="sphere-render-preview">
+    <input type="file" name="main_render" id="main-render" required>
+    <div class="tooltip hidden">Must be at least 1024x1024, PNG with transparent background.</div>
+    <div id="main-render-preview-wrapper" class="hidden">
+        <img src="#" id="main-render-preview">
     </div>
-    </div>
-
-    <div class="form-item">
-    <h2>Name:</h2>
-    <input id="form-name" type="text" name="name" value="">
-    <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
-    <div class="tooltip hidden">The name of the model, as seen on the site (e.g. <q>Red Brick 02</q>).</div>
     </div>
 
     <div class="form-item">
     <h2>Slug:</h2>
-    <input id="form-slug" type="text" name="slug-visible" value="" disabled>
-    <input id="form-slug-actual" type="text" name="slug" value="" hidden>  <!-- Duplicate hidden slug since disabled inputs aren't included in the GET parameters -->
+    <input id="form-slug" type="text" name="slug" value="">
     <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
-    <label><input id="auto-slug" type="checkbox" name="auto-slug" value="Auto" checked>Auto</label><br>
-    <div class="tooltip hidden">Unique identifier used for technical purposes. No punctuation or spaces allowed (e.g. <q>red_brick_02</q>).<br>
+    <div class="tooltip hidden">Unique identifier used for technical purposes. No punctuation or spaces allowed (e.g. <q>gothic_chair_02</q>).<br>
     <b>Must match the uploaded files.</b></div>
     </div>
 
     <div class="form-item">
-    <h2>Is seamless:</h2>
-    <input id="form-seamless" type="checkbox" name="seamless" value="Seamless" checked><br>
+    <h2>Human-readable name:</h2>
+    <input id="form-name" type="text" name="name-visible" value="" disabled>
+    <input id="form-name-actual" type="text" name="name" value="" hidden>  <!-- Duplicate hidden name since disabled inputs aren't included in the GET parameters -->
+    <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
+    <label><input id="auto-name" type="checkbox" name="auto-name" value="Auto" checked>Auto</label><br>
+    <div class="tooltip hidden">The name of the model, as seen on the site (e.g. <q>Gothic Chair 02</q>).</div>
     </div>
+
+    <!-- TODO show detected file list -->
 
     <div class="form-item">
     <h2>Author:</h2>
-    <input id="form-author" type="text" name="author" value="Rob Tuytel">
+    <input id="form-author" type="text" name="author" value="Santa Claus">
     <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
     <div class="tooltip hidden">The original creator of this model. Credit is shown on the model page.</div>
     </div>
@@ -147,9 +147,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 
     <div class="form-item">
     <h2>When to publish:</h2>
-    <input id="form-date-published" type="text" name="date_published" value="Immediately">
+    <input id="form-date-published" type="date" name="date_published">
     <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i><br>
-    <div class="tooltip hidden">The date and time (24h format) when this product should be published, in the format: <q>YYYY/MM/DD HH:MM:SS</q>.<br>(e.g. <q>2017/05/22 17:59</q>, or just <q>2017/05/22</q> which will publish at midnight).</div>
+    <div class="tooltip hidden">The date when this model should become publicly visible on the site (at midnight).<br>Leave blank to publish immediately.</div>
     </div>
 
     <div class="form-item">
