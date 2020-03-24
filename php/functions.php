@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 // Site Variables
 $SITE_NAME = "3D Model Haven";
 $SITE_DESCRIPTION = "100% Free High Quality 3D Models for Everyone";
