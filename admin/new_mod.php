@@ -22,20 +22,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 <div id="page-wrapper">
 <div id="page">
 
-
-<!--
-    [F] Main Render
-    [F] Additional Renders
-    Name
-    Slug
-    [L] File tree
-    Categories
-    Tags
-    When to Publish
-    Author
-    Facebook/Twitter
- -->
-
 <form action="/admin/new_mod_submit.php" method="POST" enctype="multipart/form-data" id="new-mod-form">
 
     <?php
@@ -74,7 +60,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     <div class="tooltip hidden">The name of the model, as seen on the site (e.g. <q>Gothic Chair 02</q>).</div>
     </div>
 
-    <!-- TODO show detected file list -->
+    <div id="file-list" class="form-item">
+        <span class='red-text'>No files found!</span>
+    </div>
 
     <div class="form-item">
     <h2>Author:</h2>

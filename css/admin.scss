@@ -8,3 +8,12 @@ $display_banner_credit: none;  // Hide if it's only our own work
 
 @import "../core/core";
 @import "../core/admin_core";
+
+#file-list {
+    border: 1px solid $c-background-light !important;
+    padding-left: 1em;
+
+    ul {
+        font-size: 0.9em;
+    }
+}

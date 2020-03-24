@@ -195,8 +195,17 @@ var go = function(){
     }
     $('#form-slug').keyup(autoName);
     $('#form-slug').change(function(){
-        $('#form-slug').val(validateSlug($('#form-slug').val()));
-        $('#form-name-actual').val($('#form-slug').val());
+        var slug = $('#form-slug').val();
+        $('#form-slug').val(validateSlug(slug));
+        $('#form-name-actual').val(slug);
+        $.post("get_mod_files.php", {slug: slug}, function(result){
+            if (Array.isArray(result) && result.length > 0){
+                var html = "Files found:<br><ul><li>" + result.join("</li><li>") + "</li></ul>";
+            }else{
+                var html = "<span class='red-text'>No files found for that slug!</span>";
+            }
+            $("#file-list").html(html);
+        });
     });
 
     var validateTagsCats = function(str){
