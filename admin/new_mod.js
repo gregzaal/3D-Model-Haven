@@ -197,7 +197,7 @@ var go = function(){
     $('#form-slug').change(function(){
         var slug = $('#form-slug').val();
         $('#form-slug').val(validateSlug(slug));
-        $('#form-name-actual').val(slug);
+        $('#form-name-actual').val($("#form-name").val());
         $.post("get_mod_files.php", {slug: slug}, function(result){
             if (Array.isArray(result) && result.length > 0){
                 var html = "Files found:<br><ul><li>" + result.join("</li><li>") + "</li></ul>";
