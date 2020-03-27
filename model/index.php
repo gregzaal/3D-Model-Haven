@@ -126,6 +126,15 @@ if ($is_published){
 
     echo "</ul>";
 
+    if ($info['tmwarn']){
+        echo "<div class='warning-block'><p>";
+        echo "<b>Warning:</b><br>";
+        echo "This model may contain trademarks or may be based off an existing copyrighted design.<br>While the files below are CC0, use of this asset is at your own risk. ";
+        insert_email("Contact us");
+        echo " for more info.";
+        echo "</p></div>";
+    }
+
     echo "</div>";  // .item-info
     echo "</div>";  // #preview-info
 

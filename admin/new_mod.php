@@ -72,6 +72,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     </div>
 
     <div class="form-item">
+    <h2>Trademark/copyright warning:</h2>
+    <input id="form-tmwarn" type="checkbox" name="tmwarn" value="tmwarn">
+    <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
+    <div class="tooltip hidden">Check if the asset depicts the name or logo of a real company, or if the model is a close copy of an actual real world product (e.g. a specific gun). This displays a warning on the model page.</div>
+    </div>
+
+    <div class="form-item">
     <h2>Categories:</h2>
     <input id="form-cats" type="text" name="cats" value="">
     <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>

@@ -104,6 +104,9 @@ $date_published = $_POST["date_published"];
 if ($date_published){
     $sql_fields['date_published'] = $_POST["date_published"];
 }
+if (isset($_POST['tmwarn'])) {
+    $sql_fields['tmwarn'] = "1";
+}
 
 // XXX
 // echo "<pre>";
