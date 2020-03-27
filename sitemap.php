@@ -23,12 +23,12 @@ foreach ($urls as $u){
 $models = get_from_db();
 foreach ($models as $t){
     echo "<url>";
-    echo "<loc>https://3dmodelhaven.com/tex/?t=".$t['slug']."</loc>";
+    echo "<loc>https://3dmodelhaven.com/model/?m=".$t['slug']."</loc>";
     echo "<lastmod>".date("Y-m-d", strtotime($t['date_published']))."</lastmod>";
     echo "<priority>0.8</priority>";
     echo "<changefreq>monthly</changefreq>";
     echo "<image:image>";
-    echo "<image:loc>https://3dmodelhaven.com/files/tex_images/spheres/".$t['slug'].".jpg</image:loc>";
+    echo "<image:loc>https://3dmodelhaven.com/files/mod_images/renders/".$t['slug'].".jpg</image:loc>";
     echo "</image:image>";
     echo "</url>";
 }

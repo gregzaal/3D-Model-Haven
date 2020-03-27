@@ -30,7 +30,7 @@ if (sizeof($info) <= 1){
     header("Location: /models/?s=".$slug);
 }
 
-$canonical = "https://3dmodelhaven.com/tex/?t=".$slug;
+$canonical = "https://3dmodelhaven.com/model/?m=".$slug;
 $t1 = [];
 $t1 ['name'] = $info['name'];
 $t1 ['date_published'] = $info['date_published'];
