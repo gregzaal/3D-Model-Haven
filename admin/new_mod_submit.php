@@ -32,7 +32,7 @@ $slug = mysqli_real_escape_string($conn, $_POST["slug"]);
 debug_console($slug);
 
 
-// Sphere render
+// Render
 $target_dir = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "mod_images", "renders");
 qmkdir($target_dir);
 $f = $_FILES['main_render']['name'];
@@ -53,7 +53,7 @@ if(isset($_POST["submit"])) {
 // Allow certain file formats
 $ext = strtolower(pathinfo(basename($f),PATHINFO_EXTENSION));
 if ($ext != 'png'){
-    $error = "Sphere render must be a PNG";
+    $error = "Render must be a PNG";
     $uploadOk = 0;
 }
 if ($uploadOk == 1) {

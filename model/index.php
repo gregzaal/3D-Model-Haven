@@ -47,7 +47,7 @@ echo "<div id='item-page'>";
 echo "<div id='page-wrapper'>";
 
 echo "<h1>";
-echo "<a href='/models/?c=all'>";
+echo "<a href='/models'>";
 echo "3D Models";
 echo "</a>";
 echo " >";
