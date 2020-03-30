@@ -56,6 +56,12 @@ $conn = db_conn_read_write();
         <?php
         make_category_list($sort, $conn, $category, true);
         ?>
+        <div class="info-block">
+            <p>
+                <b>Note:</b><br>
+                It's early days, our library is still small, but <a href="https://www.patreon.com/3dmodelhaven/overview">you can help!</a>
+            </p>
+        </div>
     </div>
 </div>
 
