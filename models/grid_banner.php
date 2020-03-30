@@ -50,7 +50,7 @@
                     $img = filepath_to_url(get_slug_thumbnail($pop[$c], 150, 85));
                     echo " style=\"background: url({$img}) no-repeat center center\"";
                     echo "></div>";
-                    echo "<p>".nice_name($c, "category")."</p>";
+                    echo "<p><span>".nice_name($c, "category")."</span></p>";
                     echo "</li>";
                     echo "</a>";
                 }
