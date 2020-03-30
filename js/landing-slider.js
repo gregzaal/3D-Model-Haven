@@ -46,7 +46,7 @@ var next_image = function(direction) {
 var now_playing = null;
 var on_load = function(){
     images = [
-    ["1.webp", "Greg Zaal"],
+    ["01.webp", "Greg Zaal"],
     ];
 
     setTimeout(function(){
@@ -60,4 +60,5 @@ var on_load = function(){
     $('#banner-img-paddle-r').click(function() {next_image(1)});
 };
 
-$(document).ready(on_load);
+// Uncomment when we have more than 1 render
+// $(document).ready(on_load);
