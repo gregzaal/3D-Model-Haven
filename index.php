@@ -5,14 +5,14 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 ?>
 
 <div id='landing-banner-wrapper'>
-    <div id='banner-img-a'>
-        <div class='banner-img-credit'>Render by Rob Tuytel</div>
+    <div id='banner-img-a' style='background-position: center bottom'>
+        <div class='banner-img-credit'>Render by Greg Zaal</div>
     </div>
-    <div id='banner-img-b' class='hide'>
+    <!-- <div id='banner-img-b' class='hide'>
         <div class='banner-img-credit'></a></div>
     </div>
     <div id='banner-img-paddle-l' class='banner-img-paddle'><i class="material-icons">keyboard_arrow_left</i></div>
-    <div id='banner-img-paddle-r' class='banner-img-paddle'><i class="material-icons">keyboard_arrow_right</i></div>
+    <div id='banner-img-paddle-r' class='banner-img-paddle'><i class="material-icons">keyboard_arrow_right</i></div> -->
 
 
     <div id='banner-title-wrapper'>

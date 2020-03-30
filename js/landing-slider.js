@@ -46,8 +46,7 @@ var next_image = function(direction) {
 var now_playing = null;
 var on_load = function(){
     images = [
-    ["1.jpg", "Rob Tuytel"],
-    ["placeholder.png", "Rob Tuytel"],
+    ["1.webp", "Greg Zaal"],
     ];
 
     setTimeout(function(){
