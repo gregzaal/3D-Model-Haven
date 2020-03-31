@@ -398,5 +398,18 @@ $display_banner_credit: none;  // Hide if it's only our own work
         i {
             vertical-align: top;
         }
+
+        a {
+            i {
+                display: inline;
+                padding: 0.1em;
+                vertical-align: bottom;
+                opacity: 0.4;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
     }
 }

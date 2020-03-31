@@ -87,7 +87,28 @@ if ($is_published){
 
     echo "<li>";
     echo "Author:<br/><b><a href=\"/models/?a=".$info['author']."\">".$info['author']."</a>";
-    echo "</b></li>";
+    echo "</b>";
+    $author_info = get_author_info($info['author'], $conn);
+    if($author_info){
+        echo "<span>";
+        if ($author_info['link']){
+            echo "<a href=\"".$author_info['link']."\">";
+            echo "<i class='material-icons'>link</i>";
+            echo "</a>";
+        }
+        if ($author_info['email']){
+            echo "<a href=\"mailto:".$author_info['email']."\">";
+            echo "<i class='material-icons'>mail_outline</i>";
+            echo "</a>";
+        }
+        if ($author_info['donate']){
+            echo "<a href=\"".$author_info['donate']."\">";
+            echo "<i class='material-icons'>favorite_border</i>";
+            echo "</a>";
+        }
+        echo "</span>";
+    }
+    echo "</li>";
 
     echo "<li>";
     $category_str = "";
