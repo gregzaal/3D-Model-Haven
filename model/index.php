@@ -206,10 +206,10 @@ TODO:
     User renders
 */
 
-if (!$GLOBALS['WORKING_LOCALLY']){
-    echo "<hr class='disqus' />";
-    include_disqus('tex_'.$slug);
-}
+// if (!$GLOBALS['WORKING_LOCALLY']){
+//     echo "<hr class='disqus' />";
+//     include_disqus('tex_'.$slug);
+// }
 
 echo "</div>";  // #page-wrapper
 echo "</div>";  // #item-page
