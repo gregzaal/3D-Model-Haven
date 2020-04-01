@@ -9,7 +9,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
     <p>Hmmm, something broke!</p>
     <p>The server may be overwhelmed by too many people, please wait a few minutes and try again.</p>
-    <p>If that doesn't work, please let me know on <a href="https://www.facebook.com/hdrihaven/">facebook</a>, <a href="https://twitter.com/HDRIHaven">twitter</a>, or by emailing <?php insert_email(); ?></p>
+    <p>If that doesn't work, please let me know on <a href="https://www.facebook.com/3dmodelhaven/">facebook</a>, <a href="https://twitter.com/3DModelHaven">twitter</a>, or by emailing <?php insert_email(); ?></p>
 
 </div>
 
