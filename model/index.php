@@ -148,6 +148,31 @@ if ($is_published){
 
     echo "</ul>";
 
+    echo "<div class='center'>";
+    echo "<p class='small'>This model is sponsored by:</p>";
+    echo "<ul id='sponsor-list'>";
+    $sponsors = get_sponsors($slug, $conn);
+    if ($sponsors){
+        foreach ($sponsors as $s){
+            echo "<li>";
+            if ($s['url'] != "none" && $s['url'] != ""){
+                echo "<a href=\"{$s['url']}\">";
+            }
+            echo $s['sponsor'];
+            if ($s['url'] != "none" && $s['url'] != ""){
+                echo "</a>";
+            }
+            echo "</li>";
+        }
+    }else{
+        echo "<li style='font-weight:300'>";
+        echo "No one yet :(";
+        echo "</li>";
+    }
+    echo "</ul>";
+    echo "<p class='small'><a href='https://www.patreon.com/3dmodelhaven/overview'>Support 3D Model Haven</a><br>to add your name here.</p>";
+    echo "</div>";
+
     if ($info['tmwarn']){
         echo "<div class='warning-block'><p>";
         echo "<b>Warning:</b><br>";
