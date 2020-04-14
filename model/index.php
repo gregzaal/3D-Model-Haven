@@ -136,9 +136,10 @@ if ($is_published){
     echo "Published:<br/><b>".date("d F Y", strtotime($info['date_published']))."</b><br/>(".time_ago($info['date_published']).")";
     echo "</li>";
 
-    $downloads_per_day = round($info['download_count']/((time() - strtotime($info['date_published']))/86400));
+    $download_count = get_download_count($info['id'], $conn);
+    $downloads_per_day = round($download_count/((time() - strtotime($info['date_published']))/86400));
     echo "<li>";
-    echo "Downloads:<br/><b>".$info['download_count']."</b> (".$downloads_per_day." per day)";
+    echo "Downloads:<br/><b>{$download_count}</b> ({$downloads_per_day} per day)";
     echo "</li>";
 
     echo "<li>";
