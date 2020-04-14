@@ -109,16 +109,16 @@ function make_grid_item($i, $category="all"){
     $html .= "<img ";
     $html .= "class='thumbnail-proxy' ";
     $local_file = get_slug_thumbnail($slug, 24, 55);
-    $imageData = base64_encode(file_get_contents($local_file));
-    $html .= "src=\"data:image/jpeg;base64,".$imageData."\" ";
+    $proxy_data = base64_encode(file_get_contents($local_file));
+    $html .= "src=\"data:image/jpeg;base64,".$proxy_data."\" ";
     $html .= "/>";
 
     // Main thumbnail images that are only loaded when they come into view
     $html .= "<img ";
     $html .= "class='thumbnail' ";
     $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "mod_images", "thumbnails", '_dummy_48.png');
-    $imageData = base64_encode(file_get_contents($local_file));
-    $html .= "src=\"data:image/png;base64,".$imageData."\" ";
+    $dummy_data = base64_encode(file_get_contents($local_file));
+    $html .= "src=\"data:image/png;base64,".$dummy_data."\" ";
     $img = get_slug_thumbnail($slug, 370, 90);
     $img = filepath_to_url($img);
     $html .= "data-src=\"{$img}\" ";
@@ -198,7 +198,7 @@ function fill_file_table($info, $folder, $parents=[]){
         }else{
             $fhash = simple_hash(filepath_to_url($fp));
             echo "<div class=\"dl-btn\" ";
-            echo  "id=\"".$info['id']."\" fhash=\"".$fhash."\"";
+            echo "id=\"".$info['id']."\" fhash=\"".$fhash."\" ";
             echo "dlurl=\"".filepath_to_url($fp)."\" ";
             echo "parent='f_{$parent}'>";
         }

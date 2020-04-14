@@ -46,7 +46,7 @@ var next_image = function(direction) {
 var now_playing = null;
 var on_load = function(){
     images = [
-    ["01.webp", "Greg Zaal"],
+    ["01.jpg", "Greg Zaal"],
     ];
 
     setTimeout(function(){
