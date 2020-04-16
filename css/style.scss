@@ -272,9 +272,71 @@ $display_banner_credit: none;  // Hide if it's only our own work
 .download-buttons {
     margin: 1em 0;
 
-    .fake-table{
+    .main-download-buttons {
+        position: relative;
+        text-align: center;
+        margin-bottom: 1.5em;
+
+        $button-size: 36px;
+        .dl-btn {
+            @extend .button-dark;
+            position: relative;
+            display: inline-block;
+            font-size: 1.1em;
+            padding: 0.5em 0.7em;
+            text-transform: uppercase;
+            font-weight: $fw-bold;
+            line-height: $button-size;
+
+            border-right: none;
+
+            &:last-child {
+                border-right: 1px solid rgba($c-text-light, 0.2);
+            }
+
+            .icon {
+                width: $button-size;
+                height: $button-size;
+                margin-right: 0.2em;
+                vertical-align: bottom;
+                @include transition();
+            }
+
+            &:hover {
+                .icon {
+                    filter: drop-shadow(0 0 3px rgba(white, 0.4));
+                    @include transition();
+                }
+
+                .tooltip {
+                    visibility: visible;
+                    opacity: 1;
+                    @include transition(0.4s);
+                }
+            }
+        }
+
+        .dl-icon {
+            display: inline-block;
+            vertical-align: middle;
+            padding-right: 0.5em;
+            width: $button-size;
+            height: $button-size;
+            content: "";
+            background-image: url("/core/img/icons/download.svg");
+            background-size: $button-size $button-size;
+            filter: saturate(0);
+            pointer-events: none;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .fake-table {
         margin: 0.5em;
         font-size: 0.9em;
+        max-height: 450px;
+        overflow-y: auto;
+        @include dark_scrollbar;
 
         a {
             color: $c-text-light;

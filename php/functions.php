@@ -174,7 +174,7 @@ function fill_file_table($info, $folder, $parents=[]){
     }
 
     $ignore_start = [".", "_"];
-    $ignore_end = [".ini", ".db"];
+    $ignore_end = [".ini", ".db", ".files"];
     foreach ($files as $f=>$fp){
         foreach ($ignore_start as $e){
             if (starts_with($f, $e)){

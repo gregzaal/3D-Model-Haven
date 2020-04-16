@@ -192,11 +192,64 @@ if ($is_published){
 
 
     echo "<div class='download-buttons'>";
-    echo "<h2>Downloads:</h2>";
-    echo "<p class='center small'><span class='red-text'>BETA</span><br>We know this download section is ugly and we'd like to improve it.<br>Please let us know <a href='https://discord.gg/Dms7Mrs'>on discord</a> if you have any ideas for how to make it easier to select the files you want.</p>";
-    $downloads = [];
-    $base_dir = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "models", $slug);
+    $sub_dir = join_paths("files", "models", $slug);
+    $base_dir = join_paths($GLOBALS['SYSTEM_ROOT'], $sub_dir);
     if (file_exists($base_dir)){
+        $downloads = [];
+        if (isset($_GET["testdl"])){
+            echo "<div class='main-download-buttons'>";
+            echo "<div class='dl-icon'></div>";
+            foreach (listdir($base_dir) as $f){
+                // TODO
+                // sum file sizes
+                // loading icon
+                if (basename(pathinfo($f, PATHINFO_FILENAME)) == $slug){
+                    $fp = join_paths($base_dir, $f);
+                    $ext = pathinfo($fp, PATHINFO_EXTENSION);
+                    $fhash = simple_hash(filepath_to_url($fp));
+                    $files_list_fp = $fp.".files";
+                    $btn_html = "<div class=\"dl-btn";
+                    $files = [];
+                    if (file_exists($files_list_fp)){
+                        $files_json = json_decode(file_get_contents($files_list_fp));
+                        array_push($files, [join_paths($sub_dir, $f), $f]);
+                        foreach ($files_json as $af){
+                            $real_fp = join_paths($base_dir, $af);
+                            if (file_exists($real_fp)){
+                                array_push($files, [join_paths($sub_dir, $af), $af]);
+                            }
+                        }
+                        $fhash = simple_hash(filepath_to_url($files_list_fp));
+                    }
+                    $do_zip = sizeof($files) > 1;
+                    if ($do_zip){
+                        $btn_html .= " zip-dl";
+                    }
+                    $btn_html .= "\" id=\"".$info['id']."\" fhash=\"".$fhash."\">";
+                    $btn_html .= format_icon($slug, $fp);
+                    $btn_html .= $ext;
+                    if ($do_zip){
+                        $files = json_encode($files);
+                        $btn_html .= "<div class='zip-dl-files hidden' name='{$f}'>{$files}</div>";
+                    }
+                    $always_includes_textures = ['gltf'];
+                    if ($do_zip || in_array(strtolower($ext), $always_includes_textures)){
+                        $btn_html .= "<div class='tooltip'>Textures included</div>";
+                    }else{
+                        $btn_html .= "<div class='tooltip red-text'>No textures included, download them below.</div>";
+                    }
+                    $btn_html .= "</div>";  // .dl-btn
+                    if (!$do_zip){
+                        $dl_url = filepath_to_url($fp);
+                        $btn_html = "<a href=\"{$dl_url}\" download=\"{$f}\" target='_blank'>{$btn_html}</a>";
+                    }
+                    echo $btn_html;
+                }
+            }
+            echo "</div>";  // .main-download-buttons
+            echo "<div id='dl-iframe'></div>";
+            echo "<p class='center'>Additional files:</p>";
+        }
         echo "<div class='fake-table'>";
         fill_file_table($info, $base_dir);
         echo "</div>";  // .fake-table
