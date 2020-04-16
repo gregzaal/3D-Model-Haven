@@ -37,6 +37,11 @@ async function createDownload(name, files) {
             },
             [channel.port2]
         );
+        setInterval(() => {
+            if (swreg.active) {
+                swreg.active.postMessage({ command: 'ping' });
+            }
+        }, 1000);
     });
 }
 
