@@ -286,13 +286,7 @@ $display_banner_credit: none;  // Hide if it's only our own work
             padding: 0.5em 0.7em;
             text-transform: uppercase;
             font-weight: $fw-bold;
-            line-height: $button-size;
-
-            border-right: none;
-
-            &:last-child {
-                border-right: 1px solid rgba($c-text-light, 0.2);
-            }
+            margin-left: -1px;  // Merge borders
 
             .icon {
                 width: $button-size;
@@ -302,7 +296,43 @@ $display_banner_credit: none;  // Hide if it's only our own work
                 @include transition();
             }
 
+            p {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+                line-height: 0.8em;
+
+                sub {
+                    font-weight: $fw-normal;
+                    text-transform: initial;
+                    font-size: 0.7em;
+                    opacity: 0.6;
+                }
+            }
+
+            .zip-loading {
+                position: absolute;
+                left: -1px;
+                right: -1px;
+                top: -1px;
+                bottom: -1px;
+                background-color: rgba($c-background, 0.8);
+
+                img {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    width: 32px;
+                }
+
+                &:hover {
+                    cursor: not-allowed;
+                }
+            }
+
             &:hover {
+                z-index: 13;  // Keep above other overlapping buttons' borders
+
                 .icon {
                     filter: drop-shadow(0 0 3px rgba(white, 0.4));
                     @include transition();
@@ -318,7 +348,7 @@ $display_banner_credit: none;  // Hide if it's only our own work
 
         .dl-icon {
             display: inline-block;
-            vertical-align: middle;
+            vertical-align: text-bottom;
             padding-right: 0.5em;
             width: $button-size;
             height: $button-size;
@@ -328,6 +358,18 @@ $display_banner_credit: none;  // Hide if it's only our own work
             filter: saturate(0);
             pointer-events: none;
             background-repeat: no-repeat;
+        }
+
+        #sw-tab-warning {
+            @extend .warning-block;
+            display: inline-block;
+            margin: 1em;
+            background-color: rgba(255, 207, 77, 0.15);
+            border: 1px solid rgba(255, 221, 128, 0.8);
+
+            i {
+                color: $c-yellow;
+            }
         }
     }
 

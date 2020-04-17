@@ -202,21 +202,23 @@ if ($is_published){
             foreach (listdir($base_dir) as $f){
                 // TODO
                 // sum file sizes
-                // loading icon
                 if (basename(pathinfo($f, PATHINFO_FILENAME)) == $slug){
                     $fp = join_paths($base_dir, $f);
                     $ext = pathinfo($fp, PATHINFO_EXTENSION);
                     $fhash = simple_hash(filepath_to_url($fp));
+                    $fsize = filesize($fp);
                     $files_list_fp = $fp.".files";
                     $btn_html = "<div class=\"dl-btn";
                     $files = [];
                     if (file_exists($files_list_fp)){
+                        $fsize = 0;
                         $files_json = json_decode(file_get_contents($files_list_fp));
                         array_push($files, [join_paths($sub_dir, $f), $f]);
                         foreach ($files_json as $af){
                             $real_fp = join_paths($base_dir, $af);
                             if (file_exists($real_fp)){
                                 array_push($files, [join_paths($sub_dir, $af), $af]);
+                                $fsize += filesize($real_fp);
                             }
                         }
                         $fhash = simple_hash(filepath_to_url($files_list_fp));
@@ -227,10 +229,11 @@ if ($is_published){
                     }
                     $btn_html .= "\" id=\"".$info['id']."\" fhash=\"".$fhash."\">";
                     $btn_html .= format_icon($slug, $fp);
-                    $btn_html .= $ext;
+                    $btn_html .= "<p>".$ext."<br><sub>".human_filesize($fsize)."</sub></p>";
                     if ($do_zip){
                         $files = json_encode($files);
                         $btn_html .= "<div class='zip-dl-files hidden' name='{$f}'>{$files}</div>";
+                        $btn_html .= "<div class='zip-loading hidden'><img src='/core/img/icons/loading.svg' /></div>";
                     }
                     $always_includes_textures = ['gltf'];
                     if ($do_zip || in_array(strtolower($ext), $always_includes_textures)){
@@ -246,8 +249,8 @@ if ($is_published){
                     echo $btn_html;
                 }
             }
+            echo "<br><div id='sw-tab-warning' class='hidden'><p><i class='material-icons'>error_outline</i> Keep this tab open until your download has finished.<br>Closing this tab may cause the download to fail.</p></div>";
             echo "</div>";  // .main-download-buttons
-            echo "<div id='dl-iframe'></div>";
             echo "<p class='center'>Additional files:</p>";
         }
         echo "<div class='fake-table'>";
