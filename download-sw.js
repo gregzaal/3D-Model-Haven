@@ -2,7 +2,7 @@
 // With modifications by https://github.com/core-process/
 
 class Crc32 {
-    constructor () {
+    constructor() {
         this.crc = -1
         this.table = new Int32Array([
             0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f, 0xe963a535,
@@ -449,5 +449,5 @@ self.addEventListener('message', (event) => {
         })()
         return;
     }
-    console.error('unknown command');
+    console.error('unknown command: ' + data.command);
 });
