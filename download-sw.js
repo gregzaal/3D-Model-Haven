@@ -351,7 +351,7 @@ class Zip {
 }
 
 
-let activeCount = 0;
+const activeDownloads = {};
 const downloads = {};
 
 function broadcastStatus() {
@@ -361,7 +361,7 @@ function broadcastStatus() {
                 client.postMessage({
                     command: 'update-status',
                     status: {
-                        activeCount: activeCount,
+                        active: activeDownloads,
                     },
                 });
             });
@@ -397,14 +397,24 @@ self.addEventListener('fetch', (event) => {
                 })
             })
         );
-        // spin off download routine
-        activeCount += 1;
+        // update status
+        const activeId = Math.random().toString(36).substring(2) + Date.now().toString(36);
+        activeDownloads[activeId] = {
+            progress: 0,
+            downloading: null,
+        };
         broadcastStatus();
+        // spin off download routine
         (async function () {
             try {
                 // download files
                 for (const file of download) {
+                    // update status
                     console.log('downloading ' + file.url + '...');
+                    activeDownloads[activeId].progress += 1 / download.length;
+                    activeDownloads[activeId].downloading = file.url;
+                    broadcastStatus();
+                    // download file chunks
                     zip.startFile(file.path);
                     const reader = (await fetch(file.url)).body.getReader();
                     while (true) {
@@ -423,7 +433,8 @@ self.addEventListener('fetch', (event) => {
                 console.error(error);
                 zip.error(error);
             }
-            activeCount -= 1;
+            // update status
+            delete activeDownloads[activeId];
             broadcastStatus();
         })();
     }

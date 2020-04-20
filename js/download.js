@@ -1,5 +1,3 @@
-let downloadStatus = null;
-
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         // prepare service worker
@@ -16,40 +14,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.error(error);
             }
         }, 1000);
-        // status update handler
-        navigator.serviceWorker.addEventListener('message', event => {
-            if (event.data.command == 'update-status') {
-                downloadStatus = event.data.status;
-                console.log('downloadStatus=', JSON.stringify(downloadStatus));
-            }
-        });
-        let activeWorker = null;
-        setInterval(() => {
-            try {
-                if (swreg.active && activeWorker !== swreg.active) {
-                    activeWorker = swreg.active;
-                    activeWorker.postMessage({ command: 'broadcast-status' });
-                }
-            }
-            catch (error) {
-                console.error(error);
-            }
-        }, 1000);
     }
     catch (error) {
         console.error(error);
     }
 });
 
-window.addEventListener('beforeunload', function (event) {
-    if (downloadStatus && downloadStatus.activeCount > 0) {
-        event.preventDefault();
-        event.returnValue = '';
-        return false;
-    }
-});
-
 async function createDownload(name, files) {
+    // create download window
+    window.open(location.origin + '/download.html', 'download-window');
     // prepare service worker
     const swreg = await navigator.serviceWorker.register('/download-sw.js', { scope: '/__download__/' });
     while (!swreg.active) {
@@ -69,7 +42,9 @@ async function createDownload(name, files) {
         const channel = new MessageChannel();
         channel.port1.addEventListener('message', (event) => {
             if (event.data.result) {
-                return resolve(url);
+                // trigger download
+                window.location.href = url;
+                return resolve();
             }
             return reject(new Error('could not prepare download' + (event.data.message ? `: ${event.data.message}` : '')));
         });

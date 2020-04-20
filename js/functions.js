@@ -28,8 +28,7 @@ var click_functions = function(){
             files.push({url: location.origin + "/" + f[0], path: f[1]});
         });
         createDownload(name, files)
-            .then(url => {
-                window.location.href = url;
+            .then(() => {
                 $(this).children('.zip-loading').addClass('hidden');
             })
             .catch(error => {
