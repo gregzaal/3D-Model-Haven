@@ -351,7 +351,23 @@ class Zip {
 }
 
 
+let activeCount = 0;
 const downloads = {};
+
+function broadcastStatus() {
+    self.clients.matchAll({ includeUncontrolled: true, type: 'window' })
+        .then(clients => {
+            clients.forEach(client => {
+                client.postMessage({
+                    command: 'update-status',
+                    status: {
+                        activeCount: activeCount,
+                    },
+                });
+            });
+        })
+        .catch(console.error);
+}
 
 self.addEventListener('install', () => {
     self.skipWaiting();
@@ -382,6 +398,8 @@ self.addEventListener('fetch', (event) => {
             })
         );
         // spin off download routine
+        activeCount += 1;
+        broadcastStatus();
         (async function () {
             try {
                 // download files
@@ -405,6 +423,8 @@ self.addEventListener('fetch', (event) => {
                 console.error(error);
                 zip.error(error);
             }
+            activeCount -= 1;
+            broadcastStatus();
         })();
     }
 });
@@ -416,6 +436,10 @@ self.addEventListener('error', (event) => {
 self.addEventListener('message', (event) => {
     const { data, ports } = event;
     if (data.command == 'ping') {
+        return;
+    }
+    if (data.command == 'broadcast-status') {
+        broadcastStatus();
         return;
     }
     if (data.command == 'create') {

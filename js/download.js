@@ -1,3 +1,5 @@
+let downloadStatus = null;
+
 document.addEventListener("DOMContentLoaded", async () => {
     try {
         // prepare service worker
@@ -14,9 +16,36 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.error(error);
             }
         }, 1000);
+        // status update handler
+        navigator.serviceWorker.addEventListener('message', event => {
+            if (event.data.command == 'update-status') {
+                downloadStatus = event.data.status;
+                console.log('downloadStatus=', JSON.stringify(downloadStatus));
+            }
+        });
+        let activeWorker = null;
+        setInterval(() => {
+            try {
+                if (swreg.active && activeWorker !== swreg.active) {
+                    activeWorker = swreg.active;
+                    activeWorker.postMessage({ command: 'broadcast-status' });
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }, 1000);
     }
     catch (error) {
         console.error(error);
+    }
+});
+
+window.addEventListener('beforeunload', function (event) {
+    if (downloadStatus && downloadStatus.activeCount > 0) {
+        event.preventDefault();
+        event.returnValue = '';
+        return false;
     }
 });
 
