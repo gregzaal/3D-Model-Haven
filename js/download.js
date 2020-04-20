@@ -41,13 +41,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-window.addEventListener('beforeunload', function (event) {
-    if (downloadStatus && downloadStatus.activeCount > 0) {
-        event.preventDefault();
-        event.returnValue = '';
-        return false;
-    }
-});
+var sBrowser, sUsrAg = navigator.userAgent;
+if (sUsrAg.indexOf("Firefox") > -1) {
+    window.addEventListener('beforeunload', function (event) {
+        if (downloadStatus && downloadStatus.activeCount > 0) {
+            event.preventDefault();
+            event.returnValue = '';
+            return false;
+        }
+    });
+}
 
 async function createDownload(name, files) {
     // prepare service worker

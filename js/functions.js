@@ -19,7 +19,10 @@ var click_functions = function(){
     });
 
     $('.zip-dl').click(function() {
-        $('#sw-tab-warning').removeClass('hidden');  // TODO only needed on firefox
+        var sBrowser, sUsrAg = navigator.userAgent;
+        if (sUsrAg.indexOf("Firefox") > -1) {
+            $('#sw-tab-warning').removeClass('hidden');
+        }
         $(this).children('.zip-loading').removeClass('hidden');
         var name = $(this).children('.zip-dl-files').attr('name');
         var files_parsed = JSON.parse($(this).children('.zip-dl-files').html());
