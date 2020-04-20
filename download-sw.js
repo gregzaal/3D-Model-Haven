@@ -2,7 +2,7 @@
 // With modifications by https://github.com/core-process/
 
 class Crc32 {
-    constructor () {
+    constructor() {
         this.crc = -1
         this.table = new Int32Array([
             0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f, 0xe963a535,
@@ -351,7 +351,23 @@ class Zip {
 }
 
 
+let activeCount = 0;
 const downloads = {};
+
+function broadcastStatus() {
+    self.clients.matchAll({ includeUncontrolled: true, type: 'window' })
+        .then(clients => {
+            clients.forEach(client => {
+                client.postMessage({
+                    command: 'update-status',
+                    status: {
+                        activeCount: activeCount,
+                    },
+                });
+            });
+        })
+        .catch(console.error);
+}
 
 self.addEventListener('install', () => {
     self.skipWaiting();
@@ -382,6 +398,8 @@ self.addEventListener('fetch', (event) => {
             })
         );
         // spin off download routine
+        activeCount += 1;
+        broadcastStatus();
         (async function () {
             try {
                 // download files
@@ -405,6 +423,8 @@ self.addEventListener('fetch', (event) => {
                 console.error(error);
                 zip.error(error);
             }
+            activeCount -= 1;
+            broadcastStatus();
         })();
     }
 });
@@ -416,6 +436,10 @@ self.addEventListener('error', (event) => {
 self.addEventListener('message', (event) => {
     const { data, ports } = event;
     if (data.command == 'ping') {
+        return;
+    }
+    if (data.command == 'broadcast-status') {
+        broadcastStatus();
         return;
     }
     if (data.command == 'create') {
@@ -449,5 +473,5 @@ self.addEventListener('message', (event) => {
         })()
         return;
     }
-    console.error('unknown command');
+    console.error('unknown command: ' + data.command);
 });
