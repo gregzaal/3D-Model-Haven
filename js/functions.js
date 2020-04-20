@@ -19,8 +19,7 @@ var click_functions = function(){
     });
 
     $('.zip-dl').click(function() {
-        var sBrowser, sUsrAg = navigator.userAgent;
-        if (sUsrAg.indexOf("Firefox") > -1) {
+        if (navigator.userAgent.indexOf("Firefox") > -1) {
             $('#sw-tab-warning').removeClass('hidden');
         }
         $(this).children('.zip-loading').removeClass('hidden');

@@ -41,8 +41,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-var sBrowser, sUsrAg = navigator.userAgent;
-if (sUsrAg.indexOf("Firefox") > -1) {
+if (navigator.userAgent.indexOf("Firefox") > -1) {
     window.addEventListener('beforeunload', function (event) {
         if (downloadStatus && downloadStatus.activeCount > 0) {
             event.preventDefault();
