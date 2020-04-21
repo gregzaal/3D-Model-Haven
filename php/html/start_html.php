@@ -45,6 +45,7 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     %GALLERYJS%
 
     <script src='<?php content_hashed_url("/core/core.js"); ?>'></script>
+    <script src='<?php content_hashed_url("/js/ua-parser.min.js"); ?>'></script>
     <script src='<?php content_hashed_url("/js/zip.js"); ?>'></script>
     <script src='<?php content_hashed_url("/js/download.js"); ?>'></script>
     <script src='<?php content_hashed_url("/js/functions.js"); ?>'></script>

@@ -19,7 +19,7 @@ var click_functions = function(){
     });
 
     $('.zip-dl').click(function() {
-        if (navigator.userAgent.indexOf("Firefox") > -1) {
+        if (UAParser().browser.name == "Firefox") {
             $('#sw-tab-warning').removeClass('hidden');
         }
         $(this).children('.zip-loading').removeClass('hidden');

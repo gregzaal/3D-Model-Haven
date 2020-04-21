@@ -1,8 +1,16 @@
-const downloadViaSW = false;
+const inMemoryDownload = (function () {
+    const ua = UAParser();
+    return (
+        (ua.browser.name == 'Edge' && ua.engine.name == 'EdgeHTML') ||
+        (ua.browser.name == 'Safari')
+    );
+})();
+
 let downloadStatus = { activeCount: 0 };
 
-if (downloadViaSW) {
+if (!inMemoryDownload) {
     document.addEventListener("DOMContentLoaded", async () => {
+        console.log('preparing service worker for download...');
         try {
             // prepare service worker
             const swreg = await navigator.serviceWorker.register('/download-sw.js', { scope: '/__download__/' });
@@ -44,7 +52,8 @@ if (downloadViaSW) {
     });
 }
 
-if (navigator.userAgent.indexOf("Firefox") > -1) {
+if (UAParser().browser.name == "Firefox") {
+    console.log('installing beforeunload handler to prevent window close while downloading...');
     window.addEventListener('beforeunload', function (event) {
         if (downloadStatus && downloadStatus.activeCount > 0) {
             event.preventDefault();
@@ -55,7 +64,8 @@ if (navigator.userAgent.indexOf("Firefox") > -1) {
 }
 
 async function createDownload(name, files) {
-    if (downloadViaSW) {
+    if (!inMemoryDownload) {
+        console.log('using service worker for download...');
         // prepare service worker
         const swreg = await navigator.serviceWorker.register('/download-sw.js', { scope: '/__download__/' });
         while (!swreg.active) {
@@ -93,6 +103,7 @@ async function createDownload(name, files) {
         });
     }
     else {
+        console.log('using in memory assembly for download...');
         // generating zip file
         const zip = new Zip(false);
         downloadStatus.activeCount += 1;
