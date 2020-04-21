@@ -108,7 +108,7 @@ function make_grid_item($i, $category="all"){
     // Encoded tiny proxy images so that there is *something* to look at while the images load
     $html .= "<img ";
     $html .= "class='thumbnail-proxy' ";
-    $local_file = get_slug_thumbnail($slug, 24, 55);
+    $local_file = get_slug_thumbnail($slug, 48, 40);
     $proxy_data = base64_encode(file_get_contents($local_file));
     $html .= "src=\"data:image/jpeg;base64,".$proxy_data."\" ";
     $html .= "/>";
