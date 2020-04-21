@@ -1,6 +1,7 @@
 const inMemoryDownload = (function () {
     const ua = UAParser();
     return (
+        (!navigator.serviceWorker) ||
         (ua.browser.name == 'Edge' && ua.engine.name == 'EdgeHTML') ||
         (ua.browser.name == 'Safari')
     );
@@ -63,7 +64,7 @@ if (UAParser().browser.name == "Firefox") {
     });
 }
 
-async function createDownload(name, files) {
+async function startDownload(name, files) {
     if (!inMemoryDownload) {
         console.log('using service worker for download...');
         // prepare service worker
@@ -81,11 +82,11 @@ async function createDownload(name, files) {
         console.log('creating download ' + url);
         console.log(JSON.stringify(files, null, 2));
         // configure URL in service worker
-        return await new Promise(function (resolve, reject) {
+        await new Promise(function (resolve, reject) {
             const channel = new MessageChannel();
             channel.port1.addEventListener('message', (event) => {
                 if (event.data.result) {
-                    return resolve(url);
+                    return resolve();
                 }
                 return reject(new Error('could not prepare download' + (event.data.message ? `: ${event.data.message}` : '')));
             });
@@ -101,6 +102,9 @@ async function createDownload(name, files) {
                 [channel.port2]
             );
         });
+        // start download
+        console.log('starting download of ' + url + '...');
+        location.href = url;
     }
     else {
         console.log('using in memory assembly for download...');
@@ -134,7 +138,24 @@ async function createDownload(name, files) {
         if (zip.outputError) {
             throw zip.outputError;
         }
-        // create blob url
-        return URL.createObjectURL(new Blob(zip.outputBytes, { type: 'application/zip' }));
+        // create blob
+        console.log('creating blob from arrays...');
+        const blob = new Blob(zip.outputBytes, { type: 'application/zip' });
+        blob.lastModifiedDate = new Date();
+        blob.name = name + '.zip';
+        // start download
+        if (window.navigator.msSaveOrOpenBlob) {
+            console.log('starting download of blob...');
+            window.navigator.msSaveOrOpenBlob(blob, blob.name);
+        } else {
+            console.log('creating object URL...');
+            const url = URL.createObjectURL(blob);
+            console.log('starting download of ' + url + '...');
+            location.href = url;
+            setTimeout(() => {
+                console.log('revoking object URL...');
+                URL.revokeObjectURL(url);
+            }, 10000);
+        }
     }
 }
