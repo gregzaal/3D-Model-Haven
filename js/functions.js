@@ -19,8 +19,7 @@ var click_functions = function(){
     });
 
     $('.zip-dl').click(function() {
-        var sBrowser, sUsrAg = navigator.userAgent;
-        if (sUsrAg.indexOf("Firefox") > -1) {
+        if (UAParser().browser.name == "Firefox") {
             $('#sw-tab-warning').removeClass('hidden');
         }
         $(this).children('.zip-loading').removeClass('hidden');
@@ -30,9 +29,8 @@ var click_functions = function(){
         files_parsed.forEach(function(f){
             files.push({url: location.origin + "/" + f[0], path: f[1]});
         });
-        createDownload(name, files)
-            .then(url => {
-                window.location.href = url;
+        startDownload(name, files)
+            .then(() => {
                 $(this).children('.zip-loading').addClass('hidden');
             })
             .catch(error => {
