@@ -196,63 +196,61 @@ if ($is_published){
     $base_dir = join_paths($GLOBALS['SYSTEM_ROOT'], $sub_dir);
     if (file_exists($base_dir)){
         $downloads = [];
-        if (isset($_GET["testdl"])){
-            echo "<div class='main-download-buttons'>";
-            echo "<div class='dl-icon'></div>";
-            foreach (listdir($base_dir) as $f){
-                // TODO
-                // sum file sizes
-                if (basename(pathinfo($f, PATHINFO_FILENAME)) == $slug){
-                    $fp = join_paths($base_dir, $f);
-                    $ext = pathinfo($fp, PATHINFO_EXTENSION);
-                    $fhash = simple_hash(filepath_to_url($fp));
-                    $fsize = filesize($fp);
-                    $files_list_fp = $fp.".files";
-                    $btn_html = "<div class=\"dl-btn";
-                    $files = [];
-                    if (file_exists($files_list_fp)){
-                        $fsize = 0;
-                        $files_json = json_decode(file_get_contents($files_list_fp));
-                        array_push($files, [join_paths($sub_dir, $f), $f]);
-                        foreach ($files_json as $af){
-                            $real_fp = join_paths($base_dir, $af);
-                            if (file_exists($real_fp)){
-                                array_push($files, [join_paths($sub_dir, $af), $af]);
-                                $fsize += filesize($real_fp);
-                            }
+        echo "<div class='main-download-buttons'>";
+        echo "<div class='dl-icon'></div>";
+        foreach (listdir($base_dir) as $f){
+            // TODO
+            // sum file sizes
+            if (basename(pathinfo($f, PATHINFO_FILENAME)) == $slug){
+                $fp = join_paths($base_dir, $f);
+                $ext = pathinfo($fp, PATHINFO_EXTENSION);
+                $fhash = simple_hash(filepath_to_url($fp));
+                $fsize = filesize($fp);
+                $files_list_fp = $fp.".files";
+                $btn_html = "<div class=\"dl-btn";
+                $files = [];
+                if (file_exists($files_list_fp)){
+                    $fsize = 0;
+                    $files_json = json_decode(file_get_contents($files_list_fp));
+                    array_push($files, [join_paths($sub_dir, $f), $f]);
+                    foreach ($files_json as $af){
+                        $real_fp = join_paths($base_dir, $af);
+                        if (file_exists($real_fp)){
+                            array_push($files, [join_paths($sub_dir, $af), $af]);
+                            $fsize += filesize($real_fp);
                         }
-                        $fhash = simple_hash(filepath_to_url($files_list_fp));
                     }
-                    $do_zip = sizeof($files) > 1;
-                    if ($do_zip){
-                        $btn_html .= " zip-dl";
-                    }
-                    $btn_html .= "\" id=\"".$info['id']."\" fhash=\"".$fhash."\">";
-                    $btn_html .= format_icon($slug, $fp);
-                    $btn_html .= "<p>".$ext."<br><sub>".human_filesize($fsize)."</sub></p>";
-                    if ($do_zip){
-                        $files = json_encode($files);
-                        $btn_html .= "<div class='zip-dl-files hidden' name='{$f}'>{$files}</div>";
-                        $btn_html .= "<div class='zip-loading hidden'><img src='/core/img/icons/loading.svg' /></div>";
-                    }
-                    $always_includes_textures = ['gltf'];
-                    if ($do_zip || in_array(strtolower($ext), $always_includes_textures)){
-                        $btn_html .= "<div class='tooltip'>Textures included</div>";
-                    }else{
-                        $btn_html .= "<div class='tooltip red-text'>No textures included, download them below.</div>";
-                    }
-                    $btn_html .= "</div>";  // .dl-btn
-                    if (!$do_zip){
-                        $dl_url = filepath_to_url($fp);
-                        $btn_html = "<a href=\"{$dl_url}\" download=\"{$f}\" target='_blank'>{$btn_html}</a>";
-                    }
-                    echo $btn_html;
+                    $fhash = simple_hash(filepath_to_url($files_list_fp));
                 }
+                $do_zip = sizeof($files) > 1;
+                if ($do_zip){
+                    $btn_html .= " zip-dl";
+                }
+                $btn_html .= "\" id=\"".$info['id']."\" fhash=\"".$fhash."\">";
+                $btn_html .= format_icon($slug, $fp);
+                $btn_html .= "<p>".$ext."<br><sub>".human_filesize($fsize)."</sub></p>";
+                if ($do_zip){
+                    $files = json_encode($files);
+                    $btn_html .= "<div class='zip-dl-files hidden' name='{$f}'>{$files}</div>";
+                    $btn_html .= "<div class='zip-loading hidden'><img src='/core/img/icons/loading.svg' /></div>";
+                }
+                $always_includes_textures = ['gltf'];
+                if ($do_zip || in_array(strtolower($ext), $always_includes_textures)){
+                    $btn_html .= "<div class='tooltip'>Textures included</div>";
+                }else{
+                    $btn_html .= "<div class='tooltip red-text'>No textures included, download them below.</div>";
+                }
+                $btn_html .= "</div>";  // .dl-btn
+                if (!$do_zip){
+                    $dl_url = filepath_to_url($fp);
+                    $btn_html = "<a href=\"{$dl_url}\" download=\"{$f}\" target='_blank'>{$btn_html}</a>";
+                }
+                echo $btn_html;
             }
-            echo "<br><div id='sw-tab-warning' class='hidden'><p><i class='material-icons'>error_outline</i> Keep this tab open until your download has finished.<br>Closing this tab may cause the download to fail.</p></div>";
-            echo "</div>";  // .main-download-buttons
-            echo "<p class='center'>Additional files:</p>";
         }
+        echo "<br><div id='sw-tab-warning' class='hidden'><p><i class='material-icons'>error_outline</i> Keep this tab open until your download has finished.<br>Closing this tab may cause the download to fail.</p></div>";
+        echo "</div>";  // .main-download-buttons
+        echo "<p class='center'>Additional files:</p>";
         echo "<div class='fake-table'>";
         fill_file_table($info, $base_dir);
         echo "</div>";  // .fake-table

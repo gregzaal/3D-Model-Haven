@@ -233,7 +233,7 @@ function format_icon($slug, $fp){
         $icon_path = get_thumbnail($fp, 24, 55);
         return "<img src=\"".filepath_to_url($icon_path)."\" alt=\"icon ".basename($fp)."\" class='icon' />";
     }
-    $ext = pathinfo($fp, PATHINFO_EXTENSION);
+    $ext = strtolower(pathinfo($fp, PATHINFO_EXTENSION));
     $icon_path = join_paths($GLOBALS['SYSTEM_ROOT'], "files/site_images/icons/file_types", "{$ext}.svg");
     if (file_exists($icon_path)){
         return "<img src=\"".filepath_to_url($icon_path)."\" class='icon' />";
