@@ -388,6 +388,8 @@ $display_banner_credit: none;  // Hide if it's only our own work
     .folder, .dl-btn {
         background-color: $c-background-lightish;
         border-bottom: 1px solid rgba($c-background-light, 0.5);
+        display: flex;
+        align-items: center;
 
         a {
             color: $c-text-light;
@@ -412,7 +414,6 @@ $display_banner_credit: none;  // Hide if it's only our own work
         padding: 0.3em;
         vertical-align: middle;
         display: inline-block;
-        width: calc(100% - 100px - 1.2em);
 
         em {
             font-style: normal;
@@ -426,12 +427,15 @@ $display_banner_credit: none;  // Hide if it's only our own work
     }
 
     .fs {
-        width: 100px;
+        min-width: 80px;
+        line-height: 21px;
         text-align: center;
+        white-space: nowrap;
+        border-left: 1px solid rgba($c-background-light, 0.5);
     }
 
     .br {
-        border-right: 1px solid rgba(black, 0.1);
+        flex-basis: 100%;
     }
 
     .sel {

@@ -205,18 +205,23 @@ function fill_file_table($info, $folder, $parents=[]){
         // echo "<div class=\"sel\"><i class=\"material-icons\">check_box_outline_blank</i></div>";
         echo "<div class='td br' style=\"text-align:left; ";
         echo "padding-left:".($level*1.3 + 0.3)."em;";
-        echo "width: calc(100% - 101px - ".($level*1.3 + 1.2)."em)\"";
-        echo ">";
+        echo "\">";
         $f_cell = str_replace($slug, "<sub>{$slug}</sub>", $f);
         $f_cell = str_replace("_", "<em>_</em>", $f_cell);
         $f_cell = format_icon($slug, $fp).$f_cell;
         echo $is_dir ? $f_cell : ($level > 0 ? "↳ " : "").'<b>'.$f_cell.'</b>';
         echo "</div>";
-        echo "<div class='td fs'>";
-        if (!$is_dir){
-            echo human_filesize(filesize($fp));
+        $img_size = $is_dir ? NULL : getimagesize($fp);
+        if(@is_array($img_size)){
+            echo "<div class='td fs'>";
+            echo $img_size[0]."𝗑".$img_size[1];
+            echo "</div>";
         }
-        echo "</div>";
+        if (!$is_dir){
+            echo "<div class='td fs'>";
+            echo human_filesize(filesize($fp));
+            echo "</div>";
+        }
         echo "</div>";
         echo $is_dir ? "" : "</a>";
         if ($is_dir){

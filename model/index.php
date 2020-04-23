@@ -199,8 +199,6 @@ if ($is_published){
         echo "<div class='main-download-buttons'>";
         echo "<div class='dl-icon'></div>";
         foreach (listdir($base_dir) as $f){
-            // TODO
-            // sum file sizes
             if (basename(pathinfo($f, PATHINFO_FILENAME)) == $slug){
                 $fp = join_paths($base_dir, $f);
                 $ext = pathinfo($fp, PATHINFO_EXTENSION);
