@@ -139,8 +139,18 @@ async function startDownload(name, files) {
             throw zip.outputError;
         }
         // create blob
-        console.log('creating blob from arrays...');
-        const blob = new Blob(zip.outputBytes, { type: 'application/zip' });
+        let byteChunks = zip.outputBytes;
+        if (UAParser().browser.name == 'Edge' && UAParser().engine.name == 'EdgeHTML') {
+            console.log('combine byte chunks...');
+            byteChunks = [new Uint8Array(zip.outputBytes.reduce((size, chunk) => size + chunk.length, 0))];
+            let offset = 0;
+            for (const chunk of zip.outputBytes) {
+                byteChunks[0].set(chunk, offset);
+                offset += chunk.length;
+            }
+        }
+        console.log('creating blob...');
+        const blob = new Blob(byteChunks, { type: 'application/zip' });
         blob.lastModifiedDate = new Date();
         blob.name = name + '.zip';
         // start download
