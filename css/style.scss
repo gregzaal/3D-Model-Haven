@@ -318,15 +318,51 @@ $display_banner_credit: none;  // Hide if it's only our own work
                 bottom: -1px;
                 background-color: rgba($c-background, 0.8);
 
-                img {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateX(-50%) translateY(-50%);
-                    width: 32px;
-                }
-
                 &:hover {
                     cursor: not-allowed;
+                }
+
+                .loading-animation {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    width: 32px;
+                    height: 32px;
+                }
+
+                .loading-animation div {
+                    box-sizing: border-box;
+                    position: absolute;
+                    width: 26px;
+                    height: 26px;
+                    margin: 3px;
+                    border: 3px solid #fff;
+                    border-radius: 50%;
+                    animation: zip-loading-loading-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                    border-color: #fff transparent transparent transparent;
+                }
+
+                .loading-animation div:nth-child(1) {
+                    animation-delay: -0.45s;
+                }
+
+                .loading-animation div:nth-child(2) {
+                    animation-delay: -0.3s;
+                }
+
+                .loading-animation div:nth-child(3) {
+                    animation-delay: -0.15s;
+                }
+
+                @keyframes zip-loading-loading-animation {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
                 }
             }
 

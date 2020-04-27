@@ -230,7 +230,7 @@ if ($is_published){
                 if ($do_zip){
                     $files = json_encode($files);
                     $btn_html .= "<div class='zip-dl-files hidden' name='{$f}'>{$files}</div>";
-                    $btn_html .= "<div class='zip-loading hidden'><img src='/core/img/icons/loading.svg' /></div>";
+                    $btn_html .= "<div class='zip-loading hidden'><div class='loading-animation'><div></div><div></div><div></div><div></div></div></div>";
                 }
                 $always_includes_textures = ['gltf'];
                 if ($do_zip || in_array(strtolower($ext), $always_includes_textures)){
