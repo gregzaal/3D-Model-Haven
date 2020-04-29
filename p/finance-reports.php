@@ -7,7 +7,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 <div id="page-wrapper">
     <h1>Finance Reports</h1>
     <p>
-        It's still early days :) The first month of payouts hasn't gone through yet, so there is nothing to see here (yet).
+        <a href="https://docs.google.com/spreadsheets/d/1sgU7ozZmsdc_r_CpCJG2wCgxlnOHEl0fbhnxVejVP6E/edit?usp=sharing">Here's a spreadsheet</a> with all of our monthly expenses including upkeep costs, model acquisitions, personnel cuts, etc.
     </p>
     <p>If you have any questions, feel free to email me at <?php insert_email() ?></p>
 
