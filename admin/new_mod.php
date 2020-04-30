@@ -6,12 +6,12 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 <html>
 <head>
     <title>Add Model</title>
-    <link href='/css/style.css' rel='stylesheet' type='text/css' />
-    <link href='/css/admin.css' rel='stylesheet' type='text/css' />
+    <link href='<?php content_hashed_url("/css/style.css"); ?>' rel='stylesheet' type='text/css' />
+    <link href='<?php content_hashed_url("/css/admin.css"); ?>' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="new_mod.js"></script>
+    <script src="<?php content_hashed_url("/admin/new_mod.js"); ?>"></script>
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
