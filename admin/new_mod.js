@@ -180,8 +180,10 @@ var go = function(){
     }
     var slugToName = function(str){
         str = str.replace(/_/g, " ");
-        str = str.replace(/([A-Z])/g, ' $1');  // Space before caps
-        str = str.replace(/^./, function(str){ return str.toUpperCase(); });  // First letter caps
+        // str = str.replace(/([A-Z])/g, ' $1');  // Space before caps
+        // str = str.replace(/^./, function(str){ return str.toUpperCase(); });  // First letter caps
+        str = str.replace(/\w\S*/g, function(str){ return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+            ; });  // Titlecase
         str = str.replace(/ +(?= )/g,'');  // Double spaces
         str = str.trim();
         return str;
