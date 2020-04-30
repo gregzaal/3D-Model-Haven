@@ -208,7 +208,6 @@ if ($is_published){
                 $btn_html = "<div class=\"dl-btn";
                 $files = [];
                 if (file_exists($files_list_fp)){
-                    $fsize = 0;
                     $files_json = json_decode(file_get_contents($files_list_fp));
                     array_push($files, [join_paths($sub_dir, $f), $f]);
                     foreach ($files_json as $af){
