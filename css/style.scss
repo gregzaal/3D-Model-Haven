@@ -538,6 +538,11 @@ $display_banner_credit: none;  // Hide if it's only our own work
             font-size: 1.2em;
         }
 
+        img {
+            margin-left: 0;
+            margin-top: 0.2em;
+        }
+
         i {
             vertical-align: top;
         }
@@ -546,7 +551,7 @@ $display_banner_credit: none;  // Hide if it's only our own work
             i {
                 display: inline;
                 padding: 0.1em;
-                vertical-align: bottom;
+                vertical-align: middle;
                 opacity: 0.4;
 
                 &:hover {

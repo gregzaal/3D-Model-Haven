@@ -6,28 +6,100 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 <div id="page-wrapper">
     <div class='me-wrapper'>
-        <img class='me' src="/files/site_images/me.jpg">
+        <img style="max-width:256px;float:left;margin-right:2em" src="/core/img/Model Haven Logo.svg">
     </div>
     <h1>Hi there!</h1>
     <p>
-        My name is Cameron Casey, I'm an environment artist from all around the United States, currently working in the video game industry.
+        3D Model Haven is where you can find high quality 3D models for free, no catch.
     </p>
     <p>
-        Together with <a href="https://hdrihaven.com/" target="_blank">Greg Zaal</a>, I run the show here for 3D Model Haven.
-    </p>
-
-    <div style="clear: both"></div>
-
-    <h1>About</h1>
-    <p>
-        3D Model Haven is a resource of free high quality 3D assets for everyone, following in the footsteps of <a href="https://hdrihaven.com/" target="_blank">HDRI Haven</a> and <a href="https://texturehaven.com/" target="_blank">Texture Haven</a>. Our goal is to create a constantly growing community-funded resource of open content, licensed as <a href="/p/license.php" target="_blank">CC0</a> for complete freedom and usability by professionals and hobbyists alike.
-    </p>
-    <p>
-        All models here are <a href="/p/license.php">CC0</a> (public domain and copyright-free). No paywalls, accounts or email spam. Just download what you want, and use it however you like.
+        All 3D models here are <a href="/p/license.php">CC0</a> (public domain). No paywalls, accounts or email spam. Just download what you want, and use it however.
     </p>
     <p>
         3D Model Haven is officially linked with <a href="https://hdrihaven.com">HDRI Haven</a> and <a href="https://texturehaven.com">Texture Haven</a>.
     </p>
+
+    <div style="clear: both"></div>
+
+    <div class="author-list">
+    <h1>Creators: </h1>
+    <ul>
+
+    <li><img class='me-med' src="/files/site_images/authors/Greg Zaal.jpg" />
+    <p><b>Greg Zaal</b>
+    <br>
+    <a href="https://hdrihaven.com"><i class='material-icons'>link</i></a>
+    <a href="mailto:info@hdrihaven.com"><i class='material-icons'>mail_outline</i></a>
+    <br>
+    <em>Founder</em>
+    </p>
+    </li>
+
+    <li><img class='me-med' src="/files/site_images/authors/Cameron Casey.jpg" />
+    <p><b>Cameron Casey</b>
+    <br>
+    <a href="https://www.artstation.com/cameroncasey"><i class='material-icons'>link</i></a>
+    <a href="mailto:cameroncasey3d@gmail.com"><i class='material-icons'>mail_outline</i></a>
+    <br>
+    <em>Founder</em>
+    </p>
+    </li>
+
+    <?php
+    $conn = db_conn_read_only();
+    $row = 0; // Default incase of SQL error
+    $sql = "SELECT * FROM authors ORDER BY `id`";
+    $result = mysqli_query($conn, $sql);
+    $array = array();
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($array, $row);
+        }
+    }
+
+    $items = get_from_db("popular", "all", "all", "all", $conn);
+
+    foreach ($array as $a){
+        $author_pic = join_paths($GLOBALS['SYSTEM_ROOT'], "/files/site_images/authors/".$a['name'].".jpg");
+        $n_items = 0;
+        foreach ($items as $i){
+            if ($i['author'] == $a['name']){
+                $n_items++;
+            }
+        }
+        if (file_exists($author_pic) && $n_items > 0){
+            $author_pic = filepath_to_url(get_thumbnail($author_pic, 150, 85));
+            echo "<li>";
+            echo "<img class='me-med' src=\"".$author_pic."\" />";
+            echo "<p>";
+            echo "<b>".$a['name']."</b>";
+            echo "<br>";
+            if ($a['link']){
+                echo "<a href=\"".$a['link']."\">";
+                echo "<i class='material-icons'>link</i>";
+                echo "</a>";
+            }
+            if ($a['email']){
+                echo "<a href=\"mailto:".$a['email']."\">";
+                echo "<i class='material-icons'>mail_outline</i>";
+                echo "</a>";
+            }
+            // if ($a['donate']){
+            //     echo "<a href=\"".$a['donate']."\">";
+            //     echo "<i class='material-icons'>favorite_border</i>";
+            //     echo "</a>";
+            // }
+            echo "<br>";
+            echo "<a href=\"/models/?a=".$a['name']."\">";
+            echo $n_items;
+            echo " models</a>";
+            echo "</p>";
+            echo "</li>";
+        }
+    }
+    ?>
+    </ul>
+    </div>
 
     <h1>Get Involved</h1>
     <p>

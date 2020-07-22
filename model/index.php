@@ -86,7 +86,14 @@ if ($is_published){
     echo "<ul class='item-info-list'>";
 
     echo "<li>";
-    echo "Author:<br/><b><a href=\"/models/?a=".$info['author']."\">".$info['author']."</a>";
+    echo "Author:<br/><b><a href=\"/models/?a=".$info['author']."\">";
+    $author_pic = join_paths($GLOBALS['SYSTEM_ROOT'], "/files/site_images/authors/".$info['author'].".jpg");
+    if (file_exists($author_pic)){
+        $author_pic = filepath_to_url(get_thumbnail($author_pic, 50, 85));
+        echo "<img class='me-sml' src=\"".$author_pic."\" />";
+    }
+    echo $info['author'];
+    echo "</a>";
     echo "</b>";
     $author_info = get_author_info($info['author'], $conn);
     if($author_info){

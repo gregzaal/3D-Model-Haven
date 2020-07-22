@@ -119,13 +119,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             <h1>About</h1>
             <img class='me' src="/files/site_images/me.jpg">
             <p>
-                My name is Cameron Casey, I'm an environment artist from all around the United States.
+                Hi there! My name is Greg Zaal, and I'm a CG artist and Open Source advocate.
             </p>
             <p>
                 Our goal for 3D Model Haven is to create a constantly growing community-funded resource of <b>open content</b>, for complete freedom and usability by professionals and hobbyists alike.
             </p>
             <p>
-                The models on this site are free, no catch, released as <a href="/p/license.php">CC0</a> (public domain and copyright-free). No paywalls, accounts or email spam. Just download what you want, and use it for any purpose.
+                All models on this site are free, no catch, released as <a href="/p/license.php">CC0</a> (public domain and copyright-free). No paywalls, accounts or email spam. Just download what you want, and use it for any purpose.
             </p>
             <p>
                 If you like what we do and want to keep this site alive, consider <a href="https://www.patreon.com/3dmodelhaven/overview">supporting us on Patreon</a>.
