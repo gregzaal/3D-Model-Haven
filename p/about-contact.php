@@ -29,7 +29,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <p><b>Greg Zaal</b>
     <br>
     <a href="https://hdrihaven.com"><i class='material-icons'>link</i></a>
-    <a href="mailto:info@hdrihaven.com"><i class='material-icons'>mail_outline</i></a>
+    <a href="mailto:info@3dmodelhaven.com"><i class='material-icons'>mail_outline</i></a>
     <br>
     <em>Founder</em>
     </p>
@@ -39,7 +39,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <p><b>Cameron Casey</b>
     <br>
     <a href="https://www.artstation.com/cameroncasey"><i class='material-icons'>link</i></a>
-    <a href="mailto:cameroncasey3d@gmail.com"><i class='material-icons'>mail_outline</i></a>
     <br>
     <em>Founder</em>
     </p>
