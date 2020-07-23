@@ -95,7 +95,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             echo "<br>";
             echo "<a href=\"/models/?a=".$a['name']."\">";
             echo $n_items;
-            echo " models</a>";
+            echo $n_items != 1 ? " models" : " model";
+            echo "</a>";
             echo "</p>";
             echo "</li>";
         }
