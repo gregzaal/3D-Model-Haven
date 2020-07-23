@@ -276,7 +276,7 @@ if ($is_published){
         echo "<h2>";
         echo "Similar Models";
         echo "</h2>";
-        echo "<div id='similar-models'>";
+        echo "<div id='similar-items'>";
         echo "<div id='tex-grid'>";
         foreach ($similar as $s){
             echo make_grid_item($s);
