@@ -111,7 +111,7 @@ if ($is_published){
         if ($author_info['donate']){
             if (starts_with($author_info['donate'], "paypal:")){
                 $author_info['donate'] = str_replace("paypal:", "", $author_info['donate']);
-                $author_info['donate'] = "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=".$author_info['donate']."&item_name=3D Model Haven: ".$info['name'];
+                $author_info['donate'] = paypal_email_to_link($author_info['donate'], "3D Model Haven: ".$info['name']);
             }
             echo "<a href=\"".$author_info['donate']."\">";
             echo "<i class='material-icons'>favorite_border</i>";

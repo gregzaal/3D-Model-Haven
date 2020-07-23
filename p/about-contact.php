@@ -84,6 +84,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 echo "</a>";
             }
             if ($a['donate']){
+                if (starts_with($a['donate'], "paypal:")){
+                    $a['donate'] = str_replace("paypal:", "", $a['donate']);
+                    $a['donate'] = paypal_email_to_link($a['donate'], "3D Model Haven");
+                }
                 echo "<a href=\"".$a['donate']."\">";
                 echo "<i class='material-icons'>favorite_border</i>";
                 echo "</a>";
