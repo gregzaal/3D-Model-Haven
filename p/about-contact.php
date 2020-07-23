@@ -83,11 +83,11 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 echo "<i class='material-icons'>mail_outline</i>";
                 echo "</a>";
             }
-            // if ($a['donate']){
-            //     echo "<a href=\"".$a['donate']."\">";
-            //     echo "<i class='material-icons'>favorite_border</i>";
-            //     echo "</a>";
-            // }
+            if ($a['donate']){
+                echo "<a href=\"".$a['donate']."\">";
+                echo "<i class='material-icons'>favorite_border</i>";
+                echo "</a>";
+            }
             echo "<br>";
             echo "<a href=\"/models/?a=".$a['name']."\">";
             echo $n_items;
