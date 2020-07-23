@@ -85,19 +85,21 @@ if ($is_published){
 
     echo "<ul class='item-info-list'>";
 
-    echo "<li>";
-    echo "Author:<br/><b><a href=\"/models/?a=".$info['author']."\">";
+    echo "<li style='display:flex; align-items: center'>";
     $author_pic = join_paths($GLOBALS['SYSTEM_ROOT'], "/files/site_images/authors/".$info['author'].".jpg");
     if (file_exists($author_pic)){
         $author_pic = filepath_to_url(get_thumbnail($author_pic, 50, 85));
         echo "<img class='me-sml' src=\"".$author_pic."\" />";
     }
+    echo "<span style='flex-grow:100'>";
+    echo "Author:<br/><b><a href=\"/models/?a=".$info['author']."\">";
     echo $info['author'];
     echo "</a>";
     echo "</b>";
+    echo "</span>";
     $author_info = get_author_info($info['author'], $conn);
     if($author_info){
-        echo "<span>";
+        echo "<span style='display:flex; flex-direction:column;'>";
         if ($author_info['link']){
             echo "<a href=\"".$author_info['link']."\">";
             echo "<i class='material-icons'>link</i>";
