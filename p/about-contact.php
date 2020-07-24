@@ -43,7 +43,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     --></li><?php
     $conn = db_conn_read_only();
     $row = 0; // Default incase of SQL error
-    $sql = "SELECT * FROM authors ORDER BY `id`";
+    $sql = "SELECT authors.*, (SELECT COUNT(*) FROM models WHERE author = authors.name) as num_models FROM authors ORDER BY num_models DESC, name ASC";
     $result = mysqli_query($conn, $sql);
     $array = array();
     if (mysqli_num_rows($result) > 0) {
@@ -52,17 +52,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         }
     }
 
-    $items = get_from_db("popular", "all", "all", "all", $conn);
-
     foreach ($array as $a){
         $author_pic = join_paths($GLOBALS['SYSTEM_ROOT'], "/files/site_images/authors/".$a['name'].".jpg");
-        $n_items = 0;
-        foreach ($items as $i){
-            if ($i['author'] == $a['name']){
-                $n_items++;
-            }
-        }
-        if (file_exists($author_pic) && $n_items > 0){
+        if (file_exists($author_pic) && $a['num_models'] > 0){
             $author_pic = filepath_to_url(get_thumbnail($author_pic, 100, 85));
             echo "<li>";
             echo "<img class='me-med' src=\"".$author_pic."\" />";
@@ -90,8 +82,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             }
             echo "<br>";
             echo "<a href=\"/models/?a=".$a['name']."\">";
-            echo $n_items;
-            echo $n_items != 1 ? " models" : " model";
+            echo $a['num_models'];
+            echo $a['num_models'] != 1 ? " models" : " model";
             echo "</a>";
             echo "</p>";
             echo "</li>";
