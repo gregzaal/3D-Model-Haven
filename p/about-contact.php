@@ -101,20 +101,35 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </ul>
     </div>
 
-    <h1>Get Involved</h1>
+    <h1>How you can help</h1>
+    <h2>1. Support us on Patreon</h2>
     <p>
-        Since all of the income for this site comes from the community, it's only fair that the community gets to decide what happens with it.
+        If you have some disposable income and you want to help us publish more free 3D models, you can support us with a small monthly donation on <a href="https://www.patreon.com/3dmodelhaven/overview">Patreon</a> :)
     </p>
     <p>
-        All Patrons have access to a private Trello board where they can add ideas and vote on new types of models, and generally decide where the money goes.
+        In return we can give you some small token of thanks, like access to a Google Drive folder that you can sync to your hard drive so you always have our latest assets at your fingertips, or immortalize your name in an empty portion of the diffuse map of a model of your choice.
     </p>
     <p>
-        If you want to get involved and help keep this site alive at the same time, consider supporting <a href="https://www.patreon.com/3dmodelhaven/overview">3D Model Haven on Patreon</a>.
+        We use your donations directly to cover the site expenses and purchase new assets from artists, as verified by our <a href="/p/finance-reports.php">monthly finance reports</a>.
+    </p>
+    <h2>2. Donate your 3D models</h2>
+    <p>
+        Have a top-notch 3D model you'd like to share with the community? We'd love to publish it for you :)
+    </p>
+    <p>
+        We have a strict standard of quality to maintain, and everything we publish has to be CC0, but if your asset is accepted the whole 3D community will benefit from it. <a href="/p/donate-model.php">Read more and submit your asset here.</a>
+    </p>
+    <h2>3. Spread the word</h2>
+    <p>
+        It's OK if you can't afford or don't want to donate to us :) You can still help us grow by making sure your friends and co-workers know about us, the more people we can help the better!
+    </p>
+    <p>
+        It's not required at all, but if you use our assets in your work you can mention where you got them from and that'll help show more people that we exist.
     </p>
 
     <h1>Contact</h1>
     <p>Got a question? Please read the <a href="/p/faq.php">FAQ</a> first :)</p>
-    <p>The easiest ways to get hold of me is through email: <?php insert_email() ?></p>
+    <p>The easiest ways to get hold of us is through email: <?php insert_email() ?></p>
 
 </div>
 
