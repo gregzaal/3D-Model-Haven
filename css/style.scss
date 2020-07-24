@@ -558,3 +558,36 @@ $display_banner_credit: none;  // Hide if it's only our own work
         }
     }
 }
+
+
+// ============================================================================
+// Misc
+// ============================================================================
+
+.author-list {
+    font-size: 80%;
+    text-align: center;
+
+    h1 {
+        font-size: 1.7em;
+        padding-right: 0;
+    }
+
+    ul {
+        li {
+            margin: 0 0.45em;
+
+            p {
+                max-width: calc(100px + 1em);
+
+                i {
+                    font-size: 24px;
+                    padding: 0.05em;
+                }
+            }
+        }
+        .me-med {
+            width: 100px;
+        }
+    }
+}

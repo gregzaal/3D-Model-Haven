@@ -22,29 +22,25 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <div style="clear: both"></div>
 
     <div class="author-list">
-    <h1>Creators: </h1>
-    <ul>
-
-    <li><img class='me-med' src="/files/site_images/authors/Greg Zaal.jpg" />
-    <p><b>Greg Zaal</b>
-    <br>
-    <a href="https://hdrihaven.com"><i class='material-icons'>link</i></a>
-    <a href="mailto:info@3dmodelhaven.com"><i class='material-icons'>mail_outline</i></a>
-    <br>
-    <em>Founder</em>
-    </p>
-    </li>
-
-    <li><img class='me-med' src="/files/site_images/authors/Cameron Casey.jpg" />
-    <p><b>Cameron Casey</b>
-    <br>
-    <a href="https://www.artstation.com/cameroncasey"><i class='material-icons'>link</i></a>
-    <br>
-    <em>Founder</em>
-    </p>
-    </li>
-
-    <?php
+    <h1>Creators:</h1><!--
+    --><ul><!--
+    --><li><img class='me-med' src="/files/site_images/authors/Greg Zaal.jpg" /><!--
+    --><p><b>Greg Zaal</b><!--
+    --><br><!--
+    --><a href="https://hdrihaven.com"><i class='material-icons'>link</i></a><!--
+    --><a href="mailto:info@3dmodelhaven.com"><i class='material-icons'>mail_outline</i></a><!--
+    --><br><!--
+    --><em>Founder</em><!--
+    --></p><!--
+    --></li><!--
+    --><li><img class='me-med' src="/files/site_images/authors/Cameron Casey.jpg" /><!--
+    --><p><b>Cameron Casey</b><!--
+    --><br><!--
+    --><a href="https://www.artstation.com/cameroncasey"><i class='material-icons'>link</i></a><!--
+    --><br><!--
+    --><em>Founder</em><!--
+    --></p><!--
+    --></li><?php
     $conn = db_conn_read_only();
     $row = 0; // Default incase of SQL error
     $sql = "SELECT * FROM authors ORDER BY `id`";
@@ -67,7 +63,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             }
         }
         if (file_exists($author_pic) && $n_items > 0){
-            $author_pic = filepath_to_url(get_thumbnail($author_pic, 150, 85));
+            $author_pic = filepath_to_url(get_thumbnail($author_pic, 100, 85));
             echo "<li>";
             echo "<img class='me-med' src=\"".$author_pic."\" />";
             echo "<p>";
