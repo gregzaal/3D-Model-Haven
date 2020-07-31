@@ -17,9 +17,10 @@ function scan_dir_for_files_rec($dir, &$results = array())
     return $results;
 }
 
-$latest_version = "1.0";
+$latest_version = "1.1";
 $available_versions = [
     "1.0",
+    "1.1",
 ];
 $version = $latest_version;
 if (isset($_GET["v"]) && trim($_GET["v"])) {
@@ -53,17 +54,25 @@ foreach ($records as $record) {
     $tags = explode(';', $tags);
     $asset['tags'] = $tags;
 
-    $file_urls = [];
+    $files = [];
     $asset_path = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "models", $slug);
     if (file_exists($asset_path)) {
         $file_paths = scan_dir_for_files_rec($asset_path);
         foreach ($file_paths as $file_path) {
             $file_url = "https://3dmodelhaven.com/files/models/{$slug}/" . substr($file_path, strlen($asset_path) + 1);
-            array_push($file_urls, $file_url);
+            if (version_compare($version, '1.1', '>=')) {
+                $file = array();
+                $file['url'] = $file_url;
+                $file['mtime'] = filemtime($file_path);
+                $file['size'] = filesize($file_path);
+                array_push($files, $file);
+            } else {
+                array_push($files, $file_url);
+            }
         }
     }
-    if (count($file_urls) > 0) {
-        $asset['files'] = $file_urls;
+    if (count($files) > 0) {
+        $asset['files'] = $files;
         $assets[$slug] = $asset;
     }
 }
