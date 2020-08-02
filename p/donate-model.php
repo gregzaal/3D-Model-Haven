@@ -25,7 +25,7 @@ If your asset includes any real-world logo, trademark, or copyrighted design, we
 
 Once your asset is approved, and before we publish it, you'll be signing a legal agreement to confirm all of this.
 
-## Guidelines
+## Requirements
 
 We value quality over quantity, and unfortunately that means we have to be very strict about reviewing your asset in order to maintain a high standard of quality on 3D Model Haven.
 
