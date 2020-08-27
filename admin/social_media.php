@@ -38,6 +38,17 @@ foreach($array as $post){
         $response = curl_exec($ch);
         curl_close($ch);
 
+        // Twitter
+        $text = $post['twitface'];
+        $img = $post['image'];
+        $xml = "value1=".$text."&value2=".$img;
+        $hook_url = $GLOBALS['HOOK_TWITTER'];
+        $ch = curl_init($hook_url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
         // Reddit
         $text = $post['reddit'];
         if ($text){
