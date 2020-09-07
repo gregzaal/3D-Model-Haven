@@ -1,5 +1,5 @@
 <?php
-include('/home/texhav/3dmodelhaven.com/php/secret_config.php');
+include('/home/modhav/3dmodelhaven.com/php/secret_config.php');
 
 $servername = $GLOBALS['DB_SERV'];
 $dbname = $GLOBALS['DB_NAME'];
