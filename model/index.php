@@ -183,7 +183,7 @@ if ($is_published){
         echo "</li>";
     }
     echo "</ul>";
-    echo "<p class='small'><a href='https://www.patreon.com/3dmodelhaven/overview'>Support 3D Model Haven</a><br>to add your name here.</p>";
+    echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support 3D Model Haven</a><br>to add your name here.</p>";
     echo "</div>";
 
     if ($info['tmwarn']){

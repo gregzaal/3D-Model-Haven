@@ -40,7 +40,7 @@ echo ">";
         }
         ?>
 
-        <a href="https://www.patreon.com/3dmodelhaven/overview">
+        <a href="https://www.patreon.com/hdrihaven/overview">
             <div class="button-red">
                 Join the ranks, support 3D Model Haven on Patreon.
             </div>
