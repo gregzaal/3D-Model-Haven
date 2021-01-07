@@ -96,7 +96,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <h1>How you can help</h1>
     <h2>1. Support us on Patreon</h2>
     <p>
-        If you have some disposable income and you want to help us publish more free 3D models, you can support us with a small monthly donation on <a href="https://www.patreon.com/hdrihaven/overview">Patreon</a> :)
+        If you have some disposable income and you want to help us publish more free 3D models, you can support us with a small monthly donation on <a href="https://polyhaven.com/support-us">Patreon</a> :)
     </p>
     <p>
         In return we can give you some small token of thanks, like access to a Google Drive folder that you can sync to your hard drive so you always have our latest assets at your fingertips, or immortalize your name in an empty portion of the diffuse map of a model of your choice.

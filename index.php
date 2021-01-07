@@ -76,7 +76,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 <p>If you'd like to help us work towards this goal, we would very much appreciate your support. The allocation and spendings of your donations can be verified by monthly <a href="/p/finance-reports.php" target="_blank">public finance reports</a>.</p>
             </div>
 
-            <a href="https://www.patreon.com/hdrihaven/overview" target="_blank">
+            <a href="https://polyhaven.com/support-us" target="_blank">
                 <div class='button-inline'>Read More / Become a Patron<img src="/files/site_images/icons/heart_white.svg" class='heart-inline'></div>
             </a>
         </div>
@@ -128,7 +128,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 All models on this site are free, no catch, released as <a href="/p/license.php">CC0</a> (public domain and copyright-free). No paywalls, accounts or email spam. Just download what you want, and use it for any purpose.
             </p>
             <p>
-                If you like what we do and want to keep this site alive, consider <a href="https://www.patreon.com/hdrihaven/overview">supporting us on Patreon</a>.
+                If you like what we do and want to keep this site alive, consider <a href="https://polyhaven.com/support-us">supporting us on Patreon</a>.
             </p>
         </div>
         <div style="clear: both"></div>
