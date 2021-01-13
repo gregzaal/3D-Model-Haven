@@ -48,8 +48,8 @@ echo ">";
     </div>
 
     <div class='social'>
-        <a href="https://www.facebook.com/3dmodelhaven/"><img src="/core/img/icons/facebook.svg"></a>
-        <a href="https://twitter.com/3DModelHaven"><img src="/core/img/icons/twitter.svg"></a>
+        <a href="https://polyhaven.com/facebook"><img src="/core/img/icons/facebook.svg"></a>
+        <a href="https://polyhaven.com/twitter"><img src="/core/img/icons/twitter.svg"></a>
         <a href="https://discord.gg/Dms7Mrs"><img src="/core/img/icons/discord.svg"></a>
     </div>
 
