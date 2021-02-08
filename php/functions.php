@@ -194,7 +194,9 @@ function fill_file_table($info, $folder, $parents=[]){
         $dl_url = filepath_to_url($fp);
 
         // TEST Load Balancer
-        $dl_url = str_replace("/files/models", "https://download.polyhaven.com/Models", $dl_url);
+        if (isset($_GET["testdl"])){
+            $dl_url = str_replace("/files/models", "https://download.polyhaven.com/Models", $dl_url);
+        }
         // END TEST
 
         echo $is_dir ? "" : "<a href=\"{$dl_url}\" download=\"{$f}\" target='_blank'>";

@@ -255,7 +255,9 @@ if ($is_published){
                     $dl_url = filepath_to_url($fp);
 
                     // TEST Load Balancer
-                    $dl_url = str_replace("/files/models", "https://download.polyhaven.com/Models", $dl_url);
+                    if (isset($_GET["testdl"])){
+                        $dl_url = str_replace("/files/models", "https://download.polyhaven.com/Models", $dl_url);
+                    }
                     // END TEST
 
                     $btn_html = "<a href=\"{$dl_url}\" download=\"{$f}\" target='_blank'>{$btn_html}</a>";

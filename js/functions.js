@@ -26,9 +26,14 @@ var click_functions = function(){
         var name = $(this).children('.zip-dl-files').attr('name');
         var files_parsed = JSON.parse($(this).children('.zip-dl-files').html());
         var files = [];
+        let searchParams = new URLSearchParams(window.location.search)
         files_parsed.forEach(function(f){
             // TEST Load Balancer
-            files.push({url: "https://download.polyhaven.com/Models/" + f[0].replace("files/models/", ""), path: f[1]});
+            if (searchParams.has('testdl')){
+                files.push({url: "https://download.polyhaven.com/Models/" + f[0].replace("files/models/", ""), path: f[1]});
+            }else{
+                files.push({url: location.origin + "/" + f[0], path: f[1]});
+            }
             // END TEST, uncomment line below:
             // files.push({url: location.origin + "/" + f[0], path: f[1]});
         });
