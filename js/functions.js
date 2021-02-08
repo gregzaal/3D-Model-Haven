@@ -27,7 +27,10 @@ var click_functions = function(){
         var files_parsed = JSON.parse($(this).children('.zip-dl-files').html());
         var files = [];
         files_parsed.forEach(function(f){
-            files.push({url: location.origin + "/" + f[0], path: f[1]});
+            // TEST Load Balancer
+            files.push({url: "https://download.polyhaven.com/Models/" + f[0].replace("files/models/", ""), path: f[1]});
+            // END TEST, uncomment line below:
+            // files.push({url: location.origin + "/" + f[0], path: f[1]});
         });
         startDownload(name, files)
             .then(() => {

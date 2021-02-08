@@ -253,6 +253,11 @@ if ($is_published){
                 $btn_html .= "</div>";  // .dl-btn
                 if (!$do_zip){
                     $dl_url = filepath_to_url($fp);
+
+                    // TEST Load Balancer
+                    $dl_url = str_replace("/files/models", "https://download.polyhaven.com/Models", $dl_url);
+                    // END TEST
+
                     $btn_html = "<a href=\"{$dl_url}\" download=\"{$f}\" target='_blank'>{$btn_html}</a>";
                 }
                 echo $btn_html;
