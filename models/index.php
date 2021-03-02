@@ -85,6 +85,8 @@ $conn = db_conn_read_only();
     }
     echo "</h1>";
 
+    insert_ad("Grid Top");
+
     include ($_SERVER['DOCUMENT_ROOT'].'/models/grid_options.php');
 
     echo "</div>";  // .title-bar
