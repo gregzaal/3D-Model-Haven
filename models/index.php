@@ -68,7 +68,9 @@ $conn = db_conn_read_only();
     if ($none_set){
         include ($_SERVER['DOCUMENT_ROOT'].'/models/grid_banner.php');
     }
+
     echo "<div class='title-bar'>";
+    echo "<div style='flex-grow:100'>";
     echo "<h1>";
     if ($search != "all") {
         echo "Search: \"".$search."\"";
@@ -85,9 +87,10 @@ $conn = db_conn_read_only();
     }
     echo "</h1>";
 
-    insert_ad("Grid Top");
-
     include ($_SERVER['DOCUMENT_ROOT'].'/models/grid_options.php');
+    echo "</div>";
+
+    insert_ad("Grid Top");
 
     echo "</div>";  // .title-bar
 
