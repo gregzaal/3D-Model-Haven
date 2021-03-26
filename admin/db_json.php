@@ -1,7 +1,7 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/php/functions.php');
 
-$sql = "SELECT * FROM models ORDER BY date_published DESC, date_taken ASC";
+$sql = "SELECT * FROM models ORDER BY date_published DESC";
 $conn = db_conn_read_only();
 $result = mysqli_query($conn, $sql);
 $data = array();
