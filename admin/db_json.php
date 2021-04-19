@@ -23,6 +23,7 @@ foreach ($data as $asset) {
   $asset['date_published'] = strtotime($asset['date_published']);
   $asset['download_count'] = (int) $asset['download_count'];
   $asset['staging'] = (bool) !$asset['is_published'];
+  $asset['old_id'] = (int) $asset['id'];
 
   $bool_props = [
     'staging',
