@@ -30,7 +30,7 @@ var click_functions = function () {
         files_parsed.forEach(function (f) {
             // TEST Load Balancer
             if (searchParams.has('testdl')) {
-                files.push({ url: "https://download.polyhaven.com/Models/" + f[0].replace("files/models/", ""), path: f[1] });
+                files.push({ url: "https://dl.polyhaven.com/file/ph-assets/png/4k/" + f[0].replace("files/models/", ""), path: f[1] });
             } else {
                 files.push({ url: location.origin + "/" + f[0], path: f[1] });
             }
