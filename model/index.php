@@ -46,8 +46,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/php/html/header.php');
 echo "<div id='item-page'>";
 echo "<div id='page-wrapper'>";
 
-insert_ad("Mod Top");
-
 echo "<h1>";
 echo "<a href='/models'>";
 echo "3D Models";

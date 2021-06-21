@@ -90,8 +90,6 @@ $conn = db_conn_read_only();
     include ($_SERVER['DOCUMENT_ROOT'].'/models/grid_options.php');
     echo "</div>";
 
-    insert_ad("Grid Top");
-
     echo "</div>";  // .title-bar
 
     echo "<div id='item-grid'>";
