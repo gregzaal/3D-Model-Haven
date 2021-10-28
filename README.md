@@ -1,3 +1,13 @@
+# NOTE: This repo is no longer in use.
+
+**3D Model Haven has migrated to polyhaven.com which was rewritten from the ground up.**
+
+**So this code base is old and no longer maintained or relevant.**
+
+**Original readme below:**
+
+----
+
 # 3D Model Haven
 
 This repo contains the website code for [3D Model Haven](https://3dmodelhaven.com/).
